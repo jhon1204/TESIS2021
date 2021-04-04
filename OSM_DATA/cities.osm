@@ -1,0 +1,1034 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version="0.6" generator="osmfilter 1.4.4">
+	<bounds minlat="-20.305519" minlon="-86.02509" maxlat="0.060049" maxlon="-68.55439"/>
+	<node id="27434277" lat="-3.749365" lon="-73.2444145" version="19" timestamp="2019-04-13T17:03:19Z" changeset="0">
+		<tag k="ele" v="106"/>
+		<tag k="name" v="Iquitos"/>
+		<tag k="place" v="city"/>
+		<tag k="name:de" v="Iquitos"/>
+		<tag k="name:en" v="Iquitos"/>
+		<tag k="name:es" v="Iquitos"/>
+		<tag k="name:pl" v="Iquitos"/>
+		<tag k="name:ru" v="Икитос"/>
+		<tag k="name:uk" v="Ікітос"/>
+		<tag k="wikidata" v="Q193289"/>
+		<tag k="wikipedia" v="es:Iquitos"/>
+		<tag k="population" v="465817"/>
+	</node>
+	<node id="59043304" lat="-15.8407581" lon="-70.0283907" version="17" timestamp="2019-06-07T23:09:49Z" changeset="0">
+		<tag k="ele" v="3830"/>
+		<tag k="name" v="Puno"/>
+		<tag k="place" v="city"/>
+		<tag k="name:de" v="Puno"/>
+		<tag k="name:en" v="Puno"/>
+		<tag k="name:es" v="Puno"/>
+		<tag k="name:pl" v="Puno"/>
+		<tag k="name:ru" v="Пуно"/>
+		<tag k="name:uk" v="Пуно"/>
+		<tag k="wikidata" v="Q232842"/>
+		<tag k="wikipedia" v="es:Puno"/>
+		<tag k="population" v="140839"/>
+	</node>
+	<node id="59115290" lat="-13.5170887" lon="-71.9785356" version="25" timestamp="2020-07-18T02:18:29Z" changeset="0">
+		<tag k="ele" v="3400"/>
+		<tag k="name" v="Cusco"/>
+		<tag k="place" v="city"/>
+		<tag k="capital" v="4"/>
+		<tag k="name:de" v="Cusco"/>
+		<tag k="name:en" v="Cusco"/>
+		<tag k="name:es" v="Cusco"/>
+		<tag k="name:fr" v="Cusco"/>
+		<tag k="name:ko" v="쿠스코"/>
+		<tag k="name:pl" v="Cuzco"/>
+		<tag k="name:qu" v="Qusqu"/>
+		<tag k="name:ru" v="Куско"/>
+		<tag k="name:uk" v="Куско"/>
+		<tag k="website" v="https://www.cusco.gob.pe/"/>
+		<tag k="alt_name" v="Cuzco"/>
+		<tag k="heritage" v="1"/>
+		<tag k="wikidata" v="Q5582862"/>
+		<tag k="wikipedia" v="es:Cuzco"/>
+		<tag k="population" v="420137"/>
+		<tag k="alt_name:qu" v="Qusqu"/>
+		<tag k="wikipedia:en" v="Cusco"/>
+		<tag k="heritage:operator" v="whc"/>
+		<tag k="source:population" v="wikipedia, 2016"/>
+		<tag k="whc:inscription_date" v="1983"/>
+	</node>
+	<node id="107988853" lat="-12.0522626" lon="-77.1391133" version="13" timestamp="2020-06-18T04:38:27Z" changeset="0">
+		<tag k="ele" v="9"/>
+		<tag k="name" v="Callao"/>
+		<tag k="place" v="city"/>
+		<tag k="name:ru" v="Кальяо"/>
+		<tag k="name:uk" v="Каяо"/>
+		<tag k="wikidata" v="Q105037"/>
+		<tag k="wikipedia" v="en:Callao"/>
+		<tag k="ref:LOCODE" v="PECLL"/>
+	</node>
+	<node id="253855157" lat="-16.3988667" lon="-71.5369607" version="20" timestamp="2020-06-18T04:27:19Z" changeset="0">
+		<tag k="ele" v="2347"/>
+		<tag k="name" v="Arequipa"/>
+		<tag k="place" v="city"/>
+		<tag k="name:de" v="Arequipa"/>
+		<tag k="name:en" v="Arequipa"/>
+		<tag k="name:es" v="Arequipa"/>
+		<tag k="name:pl" v="Arequipa"/>
+		<tag k="name:ru" v="Арекипа"/>
+		<tag k="name:uk" v="Арекіпа"/>
+		<tag k="alt_name" v="aqp"/>
+		<tag k="reg_name" v="Blanca Ciudad"/>
+		<tag k="wikidata" v="Q159273"/>
+		<tag k="wikipedia" v="es:Arequipa"/>
+		<tag k="population" v="844000"/>
+		<tag k="admin_level" v="4"/>
+	</node>
+	<node id="253905310" lat="-15.4915945" lon="-70.132216" version="12" timestamp="2020-07-18T02:18:29Z" changeset="0">
+		<tag k="ele" v="3828"/>
+		<tag k="name" v="Juliaca"/>
+		<tag k="place" v="city"/>
+		<tag k="name:en" v="Juliaca"/>
+		<tag k="name:es" v="Juliaca"/>
+		<tag k="name:fr" v="Juliaca"/>
+		<tag k="name:pt" v="Juliaca"/>
+		<tag k="name:qu" v="Hullaqa"/>
+		<tag k="name:ru" v="Хульяка"/>
+		<tag k="name:uk" v="Хульяка"/>
+		<tag k="wikidata" v="Q696074"/>
+		<tag k="wikipedia" v="en:Juliaca"/>
+		<tag k="population" v="270340"/>
+	</node>
+	<node id="253909180" lat="-13.7099813" lon="-76.2029793" version="9" timestamp="2020-02-22T06:26:49Z" changeset="0">
+		<tag k="ele" v="20"/>
+		<tag k="name" v="Pisco"/>
+		<tag k="place" v="city"/>
+		<tag k="source" v="Kaart Ground Survey 2017"/>
+		<tag k="name:en" v="Pisco"/>
+		<tag k="name:ru" v="Писко"/>
+		<tag k="name:uk" v="Піско"/>
+		<tag k="wikidata" v="Q290504"/>
+		<tag k="wikipedia" v="es:Pisco (ciudad)"/>
+	</node>
+	<node id="258064159" lat="-14.0640967" lon="-75.7290915" version="14" timestamp="2020-02-27T15:35:01Z" changeset="0">
+		<tag k="ele" v="418"/>
+		<tag k="name" v="Ica"/>
+		<tag k="place" v="city"/>
+		<tag k="name:de" v="Ica"/>
+		<tag k="name:en" v="Ica"/>
+		<tag k="name:es" v="Ica"/>
+		<tag k="name:ko" v="이카"/>
+		<tag k="name:pl" v="Ica"/>
+		<tag k="name:ru" v="Iкa"/>
+		<tag k="name:uk" v="Іка"/>
+		<tag k="wikidata" v="Q840712"/>
+		<tag k="wikipedia" v="es:Ica"/>
+	</node>
+	<node id="258072425" lat="-17.0292533" lon="-72.0155447" version="10" timestamp="2019-09-03T02:37:12Z" changeset="0">
+		<tag k="ele" v="38"/>
+		<tag k="name" v="Mollendo"/>
+		<tag k="place" v="city"/>
+		<tag k="wikidata" v="Q2351948"/>
+		<tag k="population" v="28953"/>
+	</node>
+	<node id="262945603" lat="-14.2729288" lon="-71.2265322" version="10" timestamp="2020-06-17T21:08:19Z" changeset="0">
+		<tag k="ele" v="3554"/>
+		<tag k="name" v="Sicuani"/>
+		<tag k="place" v="town"/>
+		<tag k="source" v="bing;MTC"/>
+		<tag k="name:ru" v="Сикуани"/>
+		<tag k="wikidata" v="Q4419079"/>
+		<tag k="wikipedia" v="es:Sicuani"/>
+		<tag k="population" v="55269"/>
+	</node>
+	<node id="268127318" lat="-12.0761679" lon="-75.2063189" version="11" timestamp="2020-03-02T02:32:05Z" changeset="0">
+		<tag k="ele" v="3256"/>
+		<tag k="name" v="Huancayo"/>
+		<tag k="place" v="city"/>
+		<tag k="name:de" v="Huancayo"/>
+		<tag k="name:en" v="Huancayo"/>
+		<tag k="name:es" v="Huancayo"/>
+		<tag k="name:pl" v="Huancayo"/>
+		<tag k="name:ru" v="Уанкайо"/>
+		<tag k="name:uk" v="Уанкайо"/>
+		<tag k="wikidata" v="Q468782"/>
+		<tag k="wikipedia" v="es:Huancayo"/>
+	</node>
+	<node id="268599713" lat="-13.6373482" lon="-72.8788744" version="14" timestamp="2019-04-13T17:03:19Z" changeset="0">
+		<tag k="ele" v="2380"/>
+		<tag k="name" v="Abancay"/>
+		<tag k="place" v="city"/>
+		<tag k="source" v="bing,geocatmin,GNS"/>
+		<tag k="name:de" v="Abancay"/>
+		<tag k="name:en" v="Abancay"/>
+		<tag k="name:es" v="Abancay"/>
+		<tag k="name:pl" v="Abancay"/>
+		<tag k="name:ru" v="Абанкай"/>
+		<tag k="name:uk" v="Абанкай"/>
+		<tag k="wikidata" v="Q215238"/>
+		<tag k="wikipedia" v="es:Abancay"/>
+	</node>
+	<node id="268802158" lat="-12.5938633" lon="-69.1866773" version="17" timestamp="2020-03-01T04:22:48Z" changeset="0">
+		<tag k="ele" v="205"/>
+		<tag k="name" v="Puerto Maldonado"/>
+		<tag k="place" v="city"/>
+		<tag k="name:de" v="Puerto Maldonado"/>
+		<tag k="name:en" v="Puerto Maldonado"/>
+		<tag k="name:es" v="Puerto Maldonado"/>
+		<tag k="name:pl" v="Puerto Maldonado"/>
+		<tag k="name:ru" v="Пуэрто-Мальдонадо"/>
+		<tag k="name:uk" v="Пуерто-Малдонадо"/>
+		<tag k="wikidata" v="Q541435"/>
+		<tag k="wikipedia" v="es:Puerto Maldonado"/>
+		<tag k="population" v="92000"/>
+		<tag k="description" v="Ciudad del Perú, capital del departamento de Madre de Dios"/>
+		<tag k="wikipedia:en" v="Puerto Maldonado"/>
+		<tag k="source:population" v="French Wikipedia"/>
+	</node>
+	<node id="270919346" lat="-10.7299061" lon="-73.7548827" version="12" timestamp="2020-05-22T16:05:59Z" changeset="0">
+		<tag k="ele" v="219"/>
+		<tag k="name" v="Atalaya"/>
+		<tag k="place" v="town"/>
+		<tag k="source" v="http://www.peru.gob.pe/Nuevo_Portal_Municipal/Portales/Municipalidades/1859/gal_tematico/1859/PM_1859_3134_Plano%20de%20Atalaya_2010.jpg"/>
+		<tag k="website" v="http://www.muniatalaya.gob.pe"/>
+		<tag k="wikidata" v="Q3322627"/>
+		<tag k="wikipedia" v="es:Atalaya (Ucayali)"/>
+		<tag k="population" v="10243"/>
+		<tag k="population:date" v="2005"/>
+	</node>
+	<node id="271351213" lat="-5.8951672" lon="-76.1046533" version="8" timestamp="2020-03-01T08:03:57Z" changeset="0">
+		<tag k="ele" v="150"/>
+		<tag k="name" v="Yurimaguas"/>
+		<tag k="place" v="town"/>
+		<tag k="wikidata" v="Q117625"/>
+		<tag k="population" v="64000"/>
+	</node>
+	<node id="272029209" lat="-13.1604269" lon="-74.2256973" version="14" timestamp="2020-05-23T23:03:45Z" changeset="0">
+		<tag k="ele" v="2750"/>
+		<tag k="name" v="Ayacucho"/>
+		<tag k="place" v="city"/>
+		<tag k="name:de" v="Ayacucho"/>
+		<tag k="name:en" v="Ayacucho"/>
+		<tag k="name:es" v="Ayacucho"/>
+		<tag k="name:pl" v="Ayacucho"/>
+		<tag k="name:ru" v="Аякучо"/>
+		<tag k="name:uk" v="Аякучо"/>
+		<tag k="wikidata" v="Q504215"/>
+		<tag k="wikipedia" v="es:Ayacucho"/>
+	</node>
+	<node id="272367389" lat="-9.5298511" lon="-77.5289981" version="17" timestamp="2020-06-01T20:27:00Z" changeset="0">
+		<tag k="ele" v="3061"/>
+		<tag k="name" v="Huaraz"/>
+		<tag k="place" v="city"/>
+		<tag k="name:de" v="Huaraz"/>
+		<tag k="name:en" v="Huaraz"/>
+		<tag k="name:es" v="Huaraz"/>
+		<tag k="name:ko" v="와라즈"/>
+		<tag k="name:pl" v="Huaraz"/>
+		<tag k="name:ru" v="Уарас"/>
+		<tag k="name:uk" v="Уарас"/>
+		<tag k="wikidata" v="Q793809"/>
+		<tag k="wikipedia" v="es:Huaraz"/>
+		<tag k="population" v="127000"/>
+	</node>
+	<node id="272377981" lat="-8.1116778" lon="-79.0287742" version="19" timestamp="2020-06-01T01:03:12Z" changeset="0">
+		<tag k="ele" v="37"/>
+		<tag k="name" v="Trujillo"/>
+		<tag k="place" v="city"/>
+		<tag k="name:de" v="Trujillo"/>
+		<tag k="name:en" v="Trujillo"/>
+		<tag k="name:es" v="Trujillo"/>
+		<tag k="name:pl" v="Trujillo"/>
+		<tag k="name:ru" v="Трухильо"/>
+		<tag k="name:uk" v="Трухійо"/>
+		<tag k="wikidata" v="Q214173"/>
+		<tag k="wikipedia" v="es:Trujillo (Perú)"/>
+		<tag k="population" v="709566"/>
+	</node>
+	<node id="272378756" lat="-7.1566682" lon="-78.517306" version="12" timestamp="2020-06-02T05:37:45Z" changeset="0">
+		<tag k="ele" v="2722"/>
+		<tag k="name" v="Cajamarca"/>
+		<tag k="place" v="city"/>
+		<tag k="name:de" v="Cajamarca"/>
+		<tag k="name:en" v="Cajamarca"/>
+		<tag k="name:es" v="Cajamarca"/>
+		<tag k="name:pl" v="Cajamarca"/>
+		<tag k="name:ru" v="Кахамарка"/>
+		<tag k="name:uk" v="Кахамарка"/>
+		<tag k="wikidata" v="Q205119"/>
+		<tag k="wikipedia" v="es:Cajamarca"/>
+	</node>
+	<node id="272379571" lat="-5.1949018" lon="-80.6323" version="17" timestamp="2020-05-31T00:30:27Z" changeset="0">
+		<tag k="ele" v="36"/>
+		<tag k="name" v="Piura"/>
+		<tag k="place" v="city"/>
+		<tag k="capital" v="4"/>
+		<tag k="name:de" v="Piura"/>
+		<tag k="name:en" v="Piura"/>
+		<tag k="name:es" v="Piura"/>
+		<tag k="name:pl" v="Piura"/>
+		<tag k="name:ru" v="Пьюра"/>
+		<tag k="name:uk" v="Піура"/>
+		<tag k="website" v="http://www.munipiura.gob.pe/"/>
+		<tag k="old_name" v="San Miguel de Piura"/>
+		<tag k="wikidata" v="Q223966"/>
+		<tag k="wikipedia" v="es:Piura"/>
+		<tag k="population" v="421648"/>
+	</node>
+	<node id="272399411" lat="-10.6835926" lon="-76.2561123" version="12" timestamp="2020-05-29T17:38:55Z" changeset="0">
+		<tag k="ele" v="4340"/>
+		<tag k="name" v="Cerro de Pasco"/>
+		<tag k="place" v="city"/>
+		<tag k="capital" v="4"/>
+		<tag k="name:de" v="Cerro de Pasco"/>
+		<tag k="name:en" v="Cerro de Pasco"/>
+		<tag k="name:es" v="Cerro de Pasco"/>
+		<tag k="name:pl" v="Cerro de Pasco"/>
+		<tag k="name:ru" v="Серро-де-Паско"/>
+		<tag k="name:uk" v="Серро-де-Паско"/>
+		<tag k="wikidata" v="Q674320"/>
+		<tag k="wikipedia" v="es:Cerro de Pasco"/>
+		<tag k="population" v="70000"/>
+	</node>
+	<node id="272400894" lat="-6.4877198" lon="-76.3598708" version="11" timestamp="2020-03-01T20:18:09Z" changeset="0">
+		<tag k="ele" v="332"/>
+		<tag k="name" v="Tarapoto"/>
+		<tag k="place" v="city"/>
+		<tag k="name:ru" v="Тарапото"/>
+		<tag k="old_name" v="Santa Cruz de los Motilones de Tarapoto"/>
+		<tag k="wikidata" v="Q927933"/>
+		<tag k="wikipedia" v="es:Tarapoto"/>
+		<tag k="population" v="176000"/>
+	</node>
+	<node id="272401474" lat="-9.9293255" lon="-76.2394845" version="17" timestamp="2020-05-29T22:21:23Z" changeset="0">
+		<tag k="ele" v="1899"/>
+		<tag k="name" v="Huánuco"/>
+		<tag k="place" v="city"/>
+		<tag k="name:de" v="Huánuco"/>
+		<tag k="name:en" v="Huánuco"/>
+		<tag k="name:es" v="Huánuco"/>
+		<tag k="name:pl" v="Huánuco"/>
+		<tag k="name:ru" v="Уануко"/>
+		<tag k="name:uk" v="Уануко"/>
+		<tag k="wikidata" v="Q504394"/>
+		<tag k="wikipedia" v="es:Huánuco"/>
+		<tag k="population" v="120000"/>
+	</node>
+	<node id="276523895" lat="-11.4199928" lon="-75.6877329" version="7" timestamp="2020-03-29T14:21:10Z" changeset="0">
+		<tag k="ele" v="3061"/>
+		<tag k="name" v="Tarma"/>
+		<tag k="place" v="city"/>
+		<tag k="wikidata" v="Q1759366"/>
+		<tag k="wikipedia" v="es:Tarma"/>
+		<tag k="population" v="43042"/>
+	</node>
+	<node id="276524308" lat="-11.0560593" lon="-75.3282355" version="6" timestamp="2020-03-02T21:51:34Z" changeset="0">
+		<tag k="ele" v="777"/>
+		<tag k="name" v="La Merced"/>
+		<tag k="place" v="town"/>
+		<tag k="wikidata" v="Q1014543"/>
+		<tag k="wikipedia" v="es:La Merced (Chanchamayo)"/>
+		<tag k="population" v="19983"/>
+		<tag k="population:date" v="2005-08-20"/>
+		<tag k="source:population" v="censo 2005"/>
+	</node>
+	<node id="278074020" lat="-5.7086087" lon="-78.8075898" version="12" timestamp="2020-06-02T05:12:30Z" changeset="0">
+		<tag k="ele" v="731"/>
+		<tag k="name" v="Jaén"/>
+		<tag k="place" v="city"/>
+		<tag k="source" v="MTC"/>
+		<tag k="wikidata" v="Q1229885"/>
+	</node>
+	<node id="287355649" lat="-10.7541212" lon="-77.7609383" version="7" timestamp="2020-06-06T00:26:38Z" changeset="0">
+		<tag k="ele" v="57"/>
+		<tag k="name" v="Barranca"/>
+		<tag k="place" v="town"/>
+		<tag k="wikidata" v="Q2582671"/>
+		<tag k="wikipedia" v="es:Barranca (Perú)"/>
+		<tag k="population" v="62000"/>
+		<tag k="description" v="Apodada La ciudad del Turismo, es una ciudad ubicada en el norte del departamento de Lima."/>
+	</node>
+	<node id="287844737" lat="-9.0744966" lon="-78.593609" version="14" timestamp="2020-06-01T22:54:06Z" changeset="0">
+		<tag k="ele" v="10"/>
+		<tag k="name" v="Chimbote"/>
+		<tag k="place" v="city"/>
+		<tag k="name:en" v="Chimbote"/>
+		<tag k="name:ru" v="Чимботе"/>
+		<tag k="name:uk" v="Чімботе"/>
+		<tag k="wikidata" v="Q518431"/>
+		<tag k="wikipedia" v="en:Chimbote"/>
+		<tag k="population" v="334568"/>
+	</node>
+	<node id="288399269" lat="-9.0486096" lon="-77.8100284" version="9" timestamp="2020-06-01T22:13:07Z" changeset="0">
+		<tag k="ele" v="2264"/>
+		<tag k="name" v="Caraz"/>
+		<tag k="place" v="town"/>
+		<tag k="wikidata" v="Q1035471"/>
+		<tag k="wikipedia" v="en:Caraz"/>
+		<tag k="population" v="10962"/>
+	</node>
+	<node id="292915738" lat="-6.3790362" lon="-78.8157238" version="8" timestamp="2020-06-17T20:44:59Z" changeset="0">
+		<tag k="ele" v="2647"/>
+		<tag k="name" v="Cutervo"/>
+		<tag k="place" v="town"/>
+		<tag k="wikidata" v="Q3348263"/>
+		<tag k="wikipedia" v="es:Cutervo"/>
+		<tag k="population" v="53075"/>
+		<tag k="wikipedia:en" v="Cutervo"/>
+	</node>
+	<node id="304296640" lat="-4.8900643" lon="-80.6873604" version="12" timestamp="2020-05-31T04:28:21Z" changeset="0">
+		<tag k="ele" v="61"/>
+		<tag k="name" v="Sullana"/>
+		<tag k="place" v="city"/>
+		<tag k="wikidata" v="Q510413"/>
+		<tag k="wikipedia" v="es:Sullana"/>
+	</node>
+	<node id="316181077" lat="-9.2817496" lon="-77.646261" version="10" timestamp="2020-06-01T21:02:55Z" changeset="0">
+		<tag k="ele" v="2640"/>
+		<tag k="name" v="Carhuaz"/>
+		<tag k="place" v="town"/>
+		<tag k="wikidata" v="Q1036082"/>
+		<tag k="wikipedia" v="en:Carhuaz"/>
+		<tag k="population" v="10900"/>
+	</node>
+	<node id="320100077" lat="-6.766417" lon="-79.8408308" version="10" timestamp="2020-05-31T06:12:19Z" changeset="0">
+		<tag k="ele" v="35"/>
+		<tag k="name" v="Chiclayo"/>
+		<tag k="place" v="city"/>
+		<tag k="name:de" v="Chiclayo"/>
+		<tag k="name:en" v="Chiclayo"/>
+		<tag k="name:es" v="Chiclayo"/>
+		<tag k="name:pl" v="Chiclayo"/>
+		<tag k="name:ru" v="Чиклайо"/>
+		<tag k="name:uk" v="Чіклайо"/>
+		<tag k="old_name" v="Santa María de los Valles de Chiclayo"/>
+		<tag k="wikidata" v="Q260911"/>
+		<tag k="wikipedia" v="es:Chiclayo"/>
+		<tag k="population" v="524442"/>
+		<tag k="wikipedia:en" v="Chiclayo"/>
+	</node>
+	<node id="338535898" lat="-4.1030531" lon="-81.0481341" version="9" timestamp="2020-05-31T04:32:33Z" changeset="0">
+		<tag k="ele" v="8"/>
+		<tag k="name" v="Mancora"/>
+		<tag k="place" v="town"/>
+		<tag k="wikidata" v="Q529807"/>
+		<tag k="wikipedia" v="es:Máncora"/>
+		<tag k="population" v="10128"/>
+		<tag k="wikipedia:de" v="Máncora"/>
+		<tag k="wikipedia:en" v="Máncora"/>
+		<tag k="wikipedia:fr" v="Máncora_(ville)"/>
+		<tag k="wikipedia:it" v="Máncora"/>
+		<tag k="wikipedia:qu" v="Máncora"/>
+		<tag k="addr:postcode" v="20851"/>
+	</node>
+	<node id="338539511" lat="-3.5707875" lon="-80.4596454" version="11" timestamp="2020-05-30T23:23:36Z" changeset="0">
+		<tag k="ele" v="9"/>
+		<tag k="name" v="Tumbes"/>
+		<tag k="place" v="town"/>
+		<tag k="capital" v="4"/>
+		<tag k="name:de" v="Tumbes"/>
+		<tag k="name:en" v="Tumbes"/>
+		<tag k="name:es" v="Tumbes"/>
+		<tag k="name:pl" v="Tumbes"/>
+		<tag k="name:ru" v="Тумбес"/>
+		<tag k="name:uk" v="Тумбес"/>
+		<tag k="wikidata" v="Q827640"/>
+		<tag k="wikipedia" v="es:Tumbes"/>
+		<tag k="population" v="91365"/>
+	</node>
+	<node id="340125505" lat="-5.754216" lon="-78.4421686" version="11" timestamp="2020-06-13T21:54:59Z" changeset="0">
+		<tag k="ele" v="444"/>
+		<tag k="name" v="Bagua Grande"/>
+		<tag k="place" v="town"/>
+		<tag k="website" v="http://www.muniutcubamba.gob.pe/"/>
+		<tag k="alt_name" v="Pueblo Viejo"/>
+		<tag k="wikidata" v="Q793765"/>
+		<tag k="wikipedia" v="es:Bagua Grande"/>
+		<tag k="population" v="47336"/>
+		<tag k="wikipedia:en" v="Bagua Grande"/>
+	</node>
+	<node id="340140307" lat="-6.2293182" lon="-77.8714631" version="13" timestamp="2020-06-04T18:53:36Z" changeset="0">
+		<tag k="ele" v="2338"/>
+		<tag k="name" v="Chachapoyas"/>
+		<tag k="place" v="city"/>
+		<tag k="name:de" v="Chachapoyas"/>
+		<tag k="name:en" v="Chachapoyas"/>
+		<tag k="name:es" v="Chachapoyas"/>
+		<tag k="name:pl" v="Chachapoyas"/>
+		<tag k="name:ru" v="Чачапояс"/>
+		<tag k="name:uk" v="Чачапояс"/>
+		<tag k="wikidata" v="Q757133"/>
+		<tag k="wikipedia" v="es:Chachapoyas (Perú)"/>
+		<tag k="population" v="21142"/>
+	</node>
+	<node id="409705339" lat="-4.5796872" lon="-81.2718335" version="6" timestamp="2020-05-31T04:32:33Z" changeset="0">
+		<tag k="ele" v="12"/>
+		<tag k="name" v="Talara"/>
+		<tag k="place" v="town"/>
+		<tag k="name:ru" v="Талара"/>
+		<tag k="name:uk" v="Талара"/>
+		<tag k="website" v="http://www.munitalara.gob.pe/"/>
+		<tag k="wikidata" v="Q723584"/>
+		<tag k="population" v="84978"/>
+	</node>
+	<node id="411804006" lat="-6.0627128" lon="-77.1677322" version="6" timestamp="2020-03-01T18:35:14Z" changeset="0">
+		<tag k="ele" v="844"/>
+		<tag k="name" v="Rioja"/>
+		<tag k="place" v="town"/>
+		<tag k="name:es" v="Rioja"/>
+		<tag k="wikidata" v="Q3344069"/>
+		<tag k="wikipedia" v="es:Rioja (Perú)"/>
+		<tag k="population" v="24263"/>
+		<tag k="start_date" v="1782"/>
+	</node>
+	<node id="411804007" lat="-6.0347302" lon="-76.9746773" version="17" timestamp="2020-03-01T15:40:56Z" changeset="0">
+		<tag k="ele" v="874"/>
+		<tag k="name" v="Moyobamba"/>
+		<tag k="place" v="city"/>
+		<tag k="name:de" v="Moyobamba"/>
+		<tag k="name:en" v="Moyobamba"/>
+		<tag k="name:es" v="Moyobamba"/>
+		<tag k="name:pl" v="Moyobamba"/>
+		<tag k="name:ru" v="Мойобамба"/>
+		<tag k="name:uk" v="Мойобамба"/>
+		<tag k="website" v="http://www.munimoyobamba.gob.pe"/>
+		<tag k="wikidata" v="Q285672"/>
+		<tag k="wikipedia" v="es:Moyobamba"/>
+		<tag k="population" v="120000"/>
+	</node>
+	<node id="415524339" lat="-4.3658547" lon="-70.1908742" version="4" timestamp="2020-01-22T22:01:34Z" changeset="0">
+		<tag k="name" v="Atalaia do Norte"/>
+		<tag k="place" v="town"/>
+		<tag k="source" v="IBGE"/>
+		<tag k="population" v="14292"/>
+		<tag k="IBGE:GEOCODIGO" v="130020105"/>
+	</node>
+	<node id="415524340" lat="-4.3782748" lon="-70.0290603" version="8" timestamp="2020-01-25T21:31:53Z" changeset="0">
+		<tag k="name" v="Benjamin Constant"/>
+		<tag k="place" v="town"/>
+		<tag k="source" v="IBGE"/>
+		<tag k="wikidata" v="Q1767926"/>
+		<tag k="population" v="30476"/>
+		<tag k="postal_code" v="69630-000"/>
+		<tag k="IBGE:GEOCODIGO" v="130060705"/>
+	</node>
+	<node id="415524341" lat="-4.2327349" lon="-69.9263372" version="8" timestamp="2017-06-17T17:16:36Z" changeset="0">
+		<tag k="name" v="Tabatinga"/>
+		<tag k="place" v="town"/>
+		<tag k="source" v="IBGE"/>
+		<tag k="wikidata" v="Q1750030"/>
+		<tag k="wikipedia" v="pt:Tabatinga (Amazonas)"/>
+		<tag k="population" v="47051"/>
+		<tag k="is_in:state" v="Amazonas"/>
+		<tag k="wikipedia:es" v="Tabatinga (Amazonas)"/>
+		<tag k="IBGE:GEOCODIGO" v="130406205"/>
+		<tag k="is_in:municipality" v="Tabatinga"/>
+	</node>
+	<node id="467653110" lat="-14.4500414" lon="-72.081998" version="9" timestamp="2020-12-04T00:20:54Z" changeset="0">
+		<tag k="ele" v="3666"/>
+		<tag k="name" v="Santo Tomás"/>
+		<tag k="place" v="town"/>
+		<tag k="population" v="8000"/>
+		<tag k="source" v="landsat"/>
+		<tag k="wikidata" v="Q1974445"/>
+		<tag k="wikipedia" v="es:Santo Tomás (Chumbivilcas)"/>
+	</node>
+	<node id="705042151" lat="-17.6475054" lon="-71.3398119" version="6" timestamp="2019-08-24T07:01:38Z" changeset="0">
+		<tag k="ele" v="22"/>
+		<tag k="name" v="Ilo"/>
+		<tag k="place" v="town"/>
+		<tag k="name:en" v="Ilo"/>
+		<tag k="name:es" v="Ilo"/>
+		<tag k="name:ru" v="Ило"/>
+		<tag k="wikidata" v="Q1000341"/>
+		<tag k="wikipedia" v="en:Ilo"/>
+		<tag k="population" v="58000"/>
+	</node>
+	<node id="705117990" lat="-15.3619687" lon="-75.1671392" version="10" timestamp="2020-02-22T06:02:32Z" changeset="0">
+		<tag k="ele" v="32"/>
+		<tag k="name" v="San Juan de Marcona"/>
+		<tag k="place" v="city"/>
+		<tag k="wikidata" v="Q3503097"/>
+		<tag k="wikipedia" v="es:Marcona"/>
+		<tag k="population" v="20000"/>
+	</node>
+	<node id="712924024" lat="-8.6052016" lon="-74.3063279" version="5" timestamp="2020-03-03T10:43:41Z" changeset="0">
+		<tag k="ele" v="157"/>
+		<tag k="name" v="Masisea"/>
+		<tag k="place" v="town"/>
+		<tag k="website" v="http://www.munimasisea.gob.pe"/>
+		<tag k="wikidata" v="Q34563420"/>
+		<tag k="wikipedia" v="es:Masisea"/>
+		<tag k="population" v="11593"/>
+		<tag k="description:es" v="Masisea es la ciudad capital del distrito homónimo en el departamento de Ucayali."/>
+		<tag k="population:date" v="2007"/>
+	</node>
+	<node id="761245208" lat="-3.5005659" lon="-80.2749876" version="6" timestamp="2020-05-30T23:23:36Z" changeset="0">
+		<tag k="ele" v="13"/>
+		<tag k="name" v="Zarumilla"/>
+		<tag k="place" v="town"/>
+		<tag k="wikidata" v="Q2877763"/>
+		<tag k="wikipedia" v="es:Zarumilla"/>
+		<tag k="population" v="18338"/>
+		<tag k="wikipedia:en" v="Zarumilla"/>
+		<tag k="wikipedia:fr" v="Zarumilla"/>
+		<tag k="wikipedia:pt" v="Zarumilla"/>
+		<tag k="wikipedia:qu" v="Sarumilla"/>
+		<tag k="addr:postcode" v="24151"/>
+		<tag k="wikipedia:war" v="Zarumilla"/>
+	</node>
+	<node id="805919113" lat="-6.8654175" lon="-78.1454655" version="4" timestamp="2020-06-02T04:36:17Z" changeset="0">
+		<tag k="ele" v="2628"/>
+		<tag k="name" v="Celendín"/>
+		<tag k="place" v="town"/>
+		<tag k="wikidata" v="Q3344002"/>
+		<tag k="wikipedia" v="es:Celendín"/>
+		<tag k="population" v="16721"/>
+		<tag k="wikipedia:en" v="Celendín"/>
+		<tag k="wikipedia:qu" v="Celendín"/>
+		<tag k="wikipedia:war" v="Celendín"/>
+	</node>
+	<node id="1237030175" lat="-14.8277203" lon="-74.9370624" version="13" timestamp="2020-02-22T06:02:32Z" changeset="0">
+		<tag k="ele" v="593"/>
+		<tag k="name" v="Nasca"/>
+		<tag k="place" v="city"/>
+		<tag k="source" v="GNS"/>
+		<tag k="name:en" v="Nazca"/>
+		<tag k="name:ru" v="Наска"/>
+		<tag k="name:uk" v="Наска"/>
+		<tag k="wikidata" v="Q1711521"/>
+		<tag k="wikipedia" v="en:Nazca"/>
+		<tag k="population" v="27000"/>
+	</node>
+	<node id="1426418593" lat="-6.7674263" lon="-79.7774973" version="7" timestamp="2020-06-18T02:00:07Z" changeset="0">
+		<tag k="ele" v="45"/>
+		<tag k="name" v="Pomalca"/>
+		<tag k="place" v="town"/>
+		<tag k="wikidata" v="Q34561542"/>
+		<tag k="wikipedia" v="es:Pomalca"/>
+		<tag k="population" v="18047"/>
+	</node>
+	<node id="1597542219" lat="-4.8399696" lon="-80.6490343" version="4" timestamp="2020-11-28T19:53:42Z" changeset="0">
+		<tag k="ele" v="56"/>
+		<tag k="name" v="Querecotillo"/>
+		<tag k="place" v="town"/>
+		<tag k="population" v="24452"/>
+		<tag k="wikidata" v="Q27194519"/>
+		<tag k="wikipedia" v="es:Querecotillo"/>
+	</node>
+	<node id="1597559597" lat="-4.8816137" lon="-80.7033707" version="7" timestamp="2020-11-28T19:53:42Z" changeset="0">
+		<tag k="ele" v="48"/>
+		<tag k="name" v="Marcavelica"/>
+		<tag k="place" v="town"/>
+		<tag k="population" v="26031"/>
+		<tag k="wikidata" v="Q34553958"/>
+		<tag k="wikipedia" v="es:Marcavelica"/>
+	</node>
+	<node id="1793667118" lat="-7.2433206" lon="-79.4703695" version="10" timestamp="2020-06-01T05:10:12Z" changeset="0">
+		<tag k="ele" v="94"/>
+		<tag k="name" v="Guadalupe"/>
+		<tag k="place" v="city"/>
+		<tag k="source" v="Guadalupe, Pacasmayo"/>
+		<tag k="alt_name" v="Guadalupe"/>
+		<tag k="int_name" v="Guadalupe, Provincia Pacasmayo"/>
+		<tag k="wikidata" v="Q2117510"/>
+		<tag k="wikipedia" v="en:Guadalupe, Peru"/>
+		<tag k="designation" v="Ciudad de Guadalupe, Provincia de Pacasmayo, Departamento de La Libertad"/>
+	</node>
+	<node id="1815856037" lat="-17.1938025" lon="-70.9345636" version="9" timestamp="2019-08-24T07:01:38Z" changeset="0">
+		<tag k="ele" v="1427"/>
+		<tag k="name" v="Moquegua"/>
+		<tag k="place" v="city"/>
+		<tag k="name:de" v="Moquegua"/>
+		<tag k="name:en" v="Moquegua"/>
+		<tag k="name:es" v="Moquegua"/>
+		<tag k="name:pl" v="Moquegua"/>
+		<tag k="name:ru" v="Мокегуа"/>
+		<tag k="name:uk" v="Мокеґуа"/>
+		<tag k="website" v="http://www.munimoquegua.gob.pe"/>
+		<tag k="wikidata" v="Q1000346"/>
+		<tag k="wikipedia" v="es:Moquegua"/>
+	</node>
+	<node id="1888690681" lat="-6.3153223" lon="-78.6996584" version="6" timestamp="2020-06-18T02:27:06Z" changeset="0">
+		<tag k="ele" v="1832"/>
+		<tag k="name" v="Socota"/>
+		<tag k="place" v="town"/>
+		<tag k="website" v="http://www.municipalidadsocota.gob.pe/"/>
+		<tag k="population" v="10779"/>
+	</node>
+	<node id="1924910738" lat="-8.1453677" lon="-78.1732575" version="5" timestamp="2020-06-01T05:22:45Z" changeset="0">
+		<tag k="ele" v="3104"/>
+		<tag k="name" v="Santiago de Chuco"/>
+		<tag k="place" v="town"/>
+		<tag k="wikidata" v="Q3344084"/>
+		<tag k="wikipedia" v="es:Santiago de Chuco"/>
+		<tag k="population" v="19860"/>
+	</node>
+	<node id="2003869390" lat="-14.9095426" lon="-70.1956194" version="5" timestamp="2020-06-18T02:24:03Z" changeset="0">
+		<tag k="ele" v="3866"/>
+		<tag k="name" v="Azangaro"/>
+		<tag k="place" v="town"/>
+		<tag k="wikidata" v="Q2638284"/>
+		<tag k="wikipedia" v="es:Azángaro"/>
+		<tag k="population" v="27823"/>
+	</node>
+	<node id="2003935541" lat="-14.0684826" lon="-70.4313639" version="4" timestamp="2020-06-17T21:02:22Z" changeset="0">
+		<tag k="ele" v="4321"/>
+		<tag k="name" v="Macusani"/>
+		<tag k="place" v="town"/>
+		<tag k="wikidata" v="Q3348229"/>
+		<tag k="wikipedia" v="es:Macusani"/>
+		<tag k="population" v="11707"/>
+	</node>
+	<node id="2007829605" lat="-15.016953" lon="-73.7809434" version="7" timestamp="2020-06-18T02:18:52Z" changeset="0">
+		<tag k="ele" v="3178"/>
+		<tag k="name" v="Coracora"/>
+		<tag k="place" v="town"/>
+		<tag k="name:ru" v="Коракора"/>
+		<tag k="wikidata" v="Q763662"/>
+		<tag k="wikipedia" v="es:Coracora"/>
+		<tag k="population" v="14769"/>
+	</node>
+	<node id="2016453926" lat="-12.3987428" lon="-74.8684404" version="4" timestamp="2020-12-04T23:37:22Z" changeset="0">
+		<tag k="ele" v="3263"/>
+		<tag k="name" v="Pampas"/>
+		<tag k="place" v="town"/>
+		<tag k="population" v="10880"/>
+		<tag k="wikidata" v="Q2725364"/>
+		<tag k="wikipedia" v="es:Pampas"/>
+	</node>
+	<node id="2255295272" lat="-3.9067038" lon="-70.5151509" version="7" timestamp="2020-03-01T08:32:27Z" changeset="0">
+		<tag k="ele" v="76"/>
+		<tag k="name" v="Caballococha"/>
+		<tag k="place" v="town"/>
+		<tag k="name:es" v="Caballococha"/>
+		<tag k="name:ru" v="Кабальокоча"/>
+		<tag k="wikidata" v="Q3317724"/>
+		<tag k="wikipedia" v="es:Caballococha"/>
+		<tag k="population" v="10568"/>
+	</node>
+	<node id="2324275540" lat="-13.6049098" lon="-71.5634559" version="5" timestamp="2020-12-04T01:39:43Z" changeset="0">
+		<tag k="ele" v="3699"/>
+		<tag k="name" v="Ccatcca"/>
+		<tag k="place" v="town"/>
+		<tag k="population" v="13295"/>
+		<tag k="wikidata" v="Q5055635"/>
+	</node>
+	<node id="2457963794" lat="-6.7380722" lon="-79.6391387" version="6" timestamp="2020-06-18T01:49:15Z" changeset="0">
+		<tag k="ele" v="89"/>
+		<tag k="name" v="Pátapo"/>
+		<tag k="place" v="town"/>
+		<tag k="wikidata" v="Q34565852"/>
+		<tag k="wikipedia" v="es:Pátapo"/>
+		<tag k="population" v="15270"/>
+	</node>
+	<node id="2465850333" lat="-6.8922228" lon="-79.5620121" version="5" timestamp="2020-06-18T02:11:16Z" changeset="0">
+		<tag k="ele" v="73"/>
+		<tag k="name" v="Cayaltí"/>
+		<tag k="place" v="town"/>
+		<tag k="population" v="13681"/>
+	</node>
+	<node id="2500452389" lat="-5.2269531" lon="-75.6796596" version="13" timestamp="2020-03-01T08:03:57Z" changeset="0">
+		<tag k="ele" v="126"/>
+		<tag k="name" v="Lagunas"/>
+		<tag k="place" v="town"/>
+		<tag k="source" v="http://geoportal.regionloreto.gob.pe"/>
+		<tag k="wikidata" v="Q27194615"/>
+		<tag k="wikipedia" v="es:Lagunas (Perú)"/>
+		<tag k="population" v="57396"/>
+		<tag k="designation" v="San Antonio de Las Lagunas"/>
+		<tag k="addr:postcode" v="16401"/>
+	</node>
+	<node id="2502684587" lat="-3.6011516" lon="-80.4806717" version="5" timestamp="2020-11-28T18:43:27Z" changeset="0">
+		<tag k="ele" v="15"/>
+		<tag k="name" v="San Pedro de los Incas"/>
+		<tag k="place" v="town"/>
+		<tag k="population" v="16196"/>
+		<tag k="wikidata" v="Q26205130"/>
+		<tag k="wikipedia" v="es:San Pedro de los Incas"/>
+	</node>
+	<node id="2503275347" lat="-3.6370491" lon="-80.5894174" version="4" timestamp="2020-11-28T18:43:27Z" changeset="0">
+		<tag k="addr:postcode" v="24521"/>
+		<tag k="ele" v="6"/>
+		<tag k="name" v="Caleta Cruz"/>
+		<tag k="place" v="town"/>
+		<tag k="population" v="7737"/>
+		<tag k="wikidata" v="Q27124119"/>
+		<tag k="wikipedia" v="es:Caleta Cruz"/>
+	</node>
+	<node id="2505711675" lat="-5.5575353" lon="-80.8223327" version="4" timestamp="2020-05-31T04:35:53Z" changeset="0">
+		<tag k="ele" v="14"/>
+		<tag k="name" v="Sechura"/>
+		<tag k="place" v="town"/>
+		<tag k="wikidata" v="Q3236446"/>
+		<tag k="wikipedia" v="es:Sechura"/>
+		<tag k="population" v="23250"/>
+		<tag k="addr:postcode" v="20071"/>
+	</node>
+	<node id="2507320740" lat="-4.6400714" lon="-79.7152245" version="7" timestamp="2020-11-28T19:59:03Z" changeset="0">
+		<tag k="alt_name" v="Ayavaca"/>
+		<tag k="ele" v="2714"/>
+		<tag k="name" v="Ayabaca"/>
+		<tag k="place" v="town"/>
+		<tag k="population" v="6047"/>
+		<tag k="wikidata" v="Q792713"/>
+		<tag k="wikipedia" v="es:Ayabaca"/>
+	</node>
+	<node id="2507483632" lat="-5.1842922" lon="-79.9717204" version="5" timestamp="2020-05-31T00:59:26Z" changeset="0">
+		<tag k="ele" v="133"/>
+		<tag k="name" v="Morropón"/>
+		<tag k="place" v="town"/>
+		<tag k="name:en" v="Morropón"/>
+		<tag k="wikidata" v="Q6024431"/>
+		<tag k="wikipedia" v="es:Morropón"/>
+		<tag k="population" v="8297"/>
+	</node>
+	<node id="2599345048" lat="-7.3360223" lon="-78.1704892" version="3" timestamp="2020-06-02T05:21:59Z" changeset="0">
+		<tag k="ele" v="2256"/>
+		<tag k="name" v="San Marcos"/>
+		<tag k="place" v="town"/>
+		<tag k="wikidata" v="Q3348299"/>
+		<tag k="population" v="14714"/>
+	</node>
+	<node id="2609783531" lat="-7.7342569" lon="-79.3032804" version="4" timestamp="2020-06-01T01:08:57Z" changeset="0">
+		<tag k="ele" v="83"/>
+		<tag k="name" v="Paiján"/>
+		<tag k="place" v="town"/>
+		<tag k="wikidata" v="Q7124745"/>
+		<tag k="wikipedia" v="es:Paiján"/>
+		<tag k="population" v="18931"/>
+		<tag k="wikipedia:en" v="Paiján"/>
+	</node>
+	<node id="2875442305" lat="-8.3820737" lon="-74.5387507" version="9" timestamp="2020-03-03T10:43:41Z" changeset="0">
+		<tag k="ele" v="153"/>
+		<tag k="name" v="Pucallpa"/>
+		<tag k="note" v="Bing Offset: 10.00; 0.00"/>
+		<tag k="place" v="city"/>
+		<tag k="name:de" v="Pucallpa"/>
+		<tag k="name:en" v="Pucallpa"/>
+		<tag k="name:es" v="Pucallpa"/>
+		<tag k="name:pl" v="Pucallpa"/>
+		<tag k="name:qu" v="Pukallpa"/>
+		<tag k="name:ru" v="Пукальпа"/>
+		<tag k="name:uk" v="Пукальпа"/>
+		<tag k="wikidata" v="Q217071"/>
+		<tag k="wikipedia" v="es:Pucallpa"/>
+		<tag k="population" v="250000"/>
+		<tag k="description" v="The Pucallpa city is the capital of Ucayali department."/>
+		<tag k="wikipedia:en" v="Pucallpa"/>
+		<tag k="description:es" v="Pucallpa, es una ciudad capital del departamento de Ucayali."/>
+		<tag k="source:population" v="INEI 2007"/>
+	</node>
+	<node id="2875533386" lat="-8.3548391" lon="-74.5758217" version="2" timestamp="2020-03-03T10:43:41Z" changeset="0">
+		<tag k="ele" v="156"/>
+		<tag k="name" v="Puerto Callao"/>
+		<tag k="place" v="town"/>
+		<tag k="wikidata" v="Q9064543"/>
+		<tag k="wikipedia" v="es:Puerto Callao (Coronel Portillo)"/>
+		<tag k="population" v="5000"/>
+	</node>
+	<node id="2894019578" lat="-17.1819384" lon="-70.8999142" version="5" timestamp="2020-06-17T20:29:18Z" changeset="0">
+		<tag k="ele" v="1583"/>
+		<tag k="name" v="Samegua"/>
+		<tag k="place" v="town"/>
+		<tag k="population" v="6500"/>
+	</node>
+	<node id="2967993215" lat="-8.1950956" lon="-77.8957296" version="11" timestamp="2020-06-18T00:18:18Z" changeset="0">
+		<tag k="ele" v="3199"/>
+		<tag k="name" v="Pampas"/>
+		<tag k="place" v="town"/>
+		<tag k="population" v="85020"/>
+	</node>
+	<node id="3098386923" lat="-14.6288003" lon="-69.4455887" version="6" timestamp="2020-07-22T06:04:32Z" changeset="0">
+		<tag k="ele" v="5100"/>
+		<tag k="name" v="La Rinconada"/>
+		<tag k="place" v="city"/>
+		<tag k="name:en" v="La Rinconada"/>
+		<tag k="name:es" v="La Rinconada"/>
+		<tag k="wikidata" v="Q852929"/>
+		<tag k="wikipedia" v="en:La Rinconada, Peru"/>
+		<tag k="population" v="50000"/>
+		<tag k="is_in:state" v="Puno"/>
+		<tag k="is_in:country" v="Peru"/>
+	</node>
+	<node id="3372347329" lat="-6.0088328" lon="-76.9951341" version="3" timestamp="2018-10-13T19:12:40Z" changeset="0">
+		<tag k="name" v="Alto Mayo"/>
+		<tag k="note" v="no city, not found in wikipedia"/>
+		<tag k="place" v="town"/>
+		<tag k="population" v="5000"/>
+	</node>
+	<node id="3513384693" lat="-10.9256952" lon="-74.8728888" version="5" timestamp="2020-05-18T16:05:44Z" changeset="0">
+		<tag k="ele" v="505"/>
+		<tag k="name" v="Bajo Pichanaqui"/>
+		<tag k="place" v="town"/>
+		<tag k="alt_name" v="Pichanaqui"/>
+		<tag k="wikidata" v="Q27194442"/>
+		<tag k="wikipedia" v="es:Pichanaqui"/>
+		<tag k="population" v="69456"/>
+	</node>
+	<node id="3660632922" lat="-10.5744337" lon="-75.4044786" version="9" timestamp="2020-05-29T17:58:07Z" changeset="0">
+		<tag k="ele" v="1810"/>
+		<tag k="name" v="Oxapampa"/>
+		<tag k="place" v="town"/>
+		<tag k="wikidata" v="Q1014523"/>
+		<tag k="wikipedia" v="es:Oxapampa"/>
+		<tag k="population" v="8554"/>
+		<tag k="population:date" v="2005-08-20"/>
+		<tag k="source:population" v="censo"/>
+	</node>
+	<node id="4289361265" lat="-12.0621065" lon="-77.0365256" version="12" timestamp="2019-04-13T17:03:20Z" changeset="0">
+		<tag k="ele" v="161"/>
+		<tag k="name" v="Lima"/>
+		<tag k="note" v="No confundir con el Centro histórico de Lima, ubicado en la plaza del Palacio de Gobierno."/>
+		<tag k="place" v="city"/>
+		<tag k="capital" v="yes"/>
+		<tag k="name:ab" v="Лима"/>
+		<tag k="name:am" v="ሊማ"/>
+		<tag k="name:ar" v="ليما"/>
+		<tag k="name:be" v="Ліма"/>
+		<tag k="name:bg" v="Лима"/>
+		<tag k="name:bn" v="লিমা"/>
+		<tag k="name:bo" v="ལི་མ།"/>
+		<tag k="name:cv" v="Лима"/>
+		<tag k="name:de" v="Lima"/>
+		<tag k="name:el" v="Λίμα"/>
+		<tag k="name:en" v="Lima"/>
+		<tag k="name:eo" v="Limo"/>
+		<tag k="name:es" v="Lima"/>
+		<tag k="name:fa" v="لیما"/>
+		<tag k="name:fr" v="Lima"/>
+		<tag k="name:ga" v="Líoma"/>
+		<tag k="name:he" v="לימה"/>
+		<tag k="name:hi" v="लीमा"/>
+		<tag k="name:hu" v="Lima"/>
+		<tag k="name:hy" v="Լիմա"/>
+		<tag k="name:is" v="Líma"/>
+		<tag k="name:ja" v="リマ"/>
+		<tag k="name:ka" v="ლიმა"/>
+		<tag k="name:ko" v="리마"/>
+		<tag k="name:ku" v="Lîma"/>
+		<tag k="name:mk" v="Лима"/>
+		<tag k="name:ml" v="ലിമ"/>
+		<tag k="name:mr" v="लिमा"/>
+		<tag k="name:oc" v="Lima"/>
+		<tag k="name:os" v="Лимæ"/>
+		<tag k="name:pl" v="Lima"/>
+		<tag k="name:ru" v="Лима"/>
+		<tag k="name:sr" v="Лима"/>
+		<tag k="name:sv" v="Lima"/>
+		<tag k="name:ta" v="லிமா"/>
+		<tag k="name:th" v="ลิมา"/>
+		<tag k="name:tl" v="Lungsod ng Lima"/>
+		<tag k="name:ug" v="لىما"/>
+		<tag k="name:uk" v="Ліма"/>
+		<tag k="name:ur" v="لیما"/>
+		<tag k="name:yi" v="לימא"/>
+		<tag k="name:zh" v="利馬"/>
+		<tag k="name:arz" v="ليما"/>
+		<tag k="name:krc" v="Лима"/>
+		<tag k="name:mhr" v="Лима"/>
+		<tag k="name:pnb" v="لیما"/>
+		<tag k="name:xmf" v="ლიმა"/>
+		<tag k="wikidata" v="Q2868"/>
+		<tag k="wikipedia" v="es:Lima"/>
+		<tag k="population" v="9989369"/>
+		<tag k="admin_level" v="2"/>
+		<tag k="name:be-tarask" v="Ліма"/>
+		<tag k="source:name:oc" v="Lo Congrès"/>
+	</node>
+	<node id="4590192817" lat="-18.0138521" lon="-70.2511614" version="10" timestamp="2020-07-17T19:09:42Z" changeset="0">
+		<tag k="ele" v="577"/>
+		<tag k="name" v="Tacna"/>
+		<tag k="place" v="city"/>
+		<tag k="source" v="bing,geocatmin,GNS"/>
+		<tag k="name:de" v="Tacna"/>
+		<tag k="name:en" v="Tacna"/>
+		<tag k="name:es" v="Tacna"/>
+		<tag k="name:ko" v="타크나"/>
+		<tag k="name:pl" v="Tacna"/>
+		<tag k="name:ru" v="Такна"/>
+		<tag k="name:uk" v="Такна"/>
+		<tag k="wikidata" v="Q272795"/>
+		<tag k="wikipedia" v="es:Tacna"/>
+	</node>
+	<node id="4941304087" lat="-4.3795699" lon="-79.9431953" version="4" timestamp="2019-06-07T22:59:56Z" changeset="0">
+		<tag k="ele" v="440"/>
+		<tag k="name" v="Macará"/>
+		<tag k="place" v="town"/>
+		<tag k="wikidata" v="Q6722685"/>
+		<tag k="wikipedia" v="es:Macará"/>
+		<tag k="is_capital" v="county"/>
+		<tag k="population" v="15730"/>
+		<tag k="is_in:state" v="Provincia de Loja"/>
+		<tag k="is_in:country" v="Ecuador"/>
+		<tag k="population:date" v="2010"/>
+		<tag k="is_in:iso_3166_2" v="EC-L"/>
+		<tag k="gns_classification" v="PPL"/>
+		<tag k="is_in:country_code" v="EC"/>
+	</node>
+	<node id="5326264643" lat="-11.7751615" lon="-75.5000068" version="3" timestamp="2020-07-17T19:05:48Z" changeset="0">
+		<tag k="ele" v="3392"/>
+		<tag k="name" v="Jauja"/>
+		<tag k="place" v="town"/>
+		<tag k="wikidata" v="Q917434"/>
+		<tag k="wikipedia" v="en:Jauja"/>
+		<tag k="population" v="30000"/>
+	</node>
+	<node id="5365497919" lat="-5.831621" lon="-76.5598614" version="4" timestamp="2020-03-01T08:03:57Z" changeset="0">
+		<tag k="ele" v="209"/>
+		<tag k="name" v="Balsapuerto"/>
+		<tag k="place" v="town"/>
+		<tag k="source" v="http://geoportal.regionloreto.gob.pe"/>
+		<tag k="name:en" v="Balas Puerto"/>
+		<tag k="population" v="17436"/>
+	</node>
+	<node id="5502413435" lat="-11.4954906" lon="-77.207044" version="6" timestamp="2020-06-06T00:52:59Z" changeset="0">
+		<tag k="ele" v="184"/>
+		<tag k="name" v="Huaral"/>
+		<tag k="place" v="city"/>
+		<tag k="wikidata" v="Q723677"/>
+		<tag k="wikipedia" v="es:Huaral"/>
+	</node>
+	<node id="6484874613" lat="-4.5070455" lon="-73.5740018" version="2" timestamp="2020-06-18T04:34:22Z" changeset="0">
+		<tag k="ele" v="101"/>
+		<tag k="name" v="Nauta"/>
+		<tag k="place" v="city"/>
+		<tag k="wikidata" v="Q3309417"/>
+		<tag k="population" v="32000"/>
+	</node>
+	<node id="6486650875" lat="-5.0910296" lon="-81.1061383" version="4" timestamp="2020-05-31T01:10:18Z" changeset="0">
+		<tag k="ele" v="7"/>
+		<tag k="name" v="Paita"/>
+		<tag k="place" v="city"/>
+		<tag k="name:en" v="Paita"/>
+		<tag k="name:ru" v="Пайта"/>
+		<tag k="name:uk" v="Пайта"/>
+		<tag k="wikidata" v="Q1026270"/>
+		<tag k="wikipedia" v="es:Paita"/>
+		<tag k="population" v="180000"/>
+		<tag k="ref:LOCODE" v="PEPAI"/>
+		<tag k="addr:postcode" v="20701"/>
+	</node>
+	<node id="6488354307" lat="-6.3959419" lon="-77.4822379" version="5" timestamp="2020-12-01T03:14:49Z" changeset="0">
+		<tag k="alt_name" v="San Nicolás"/>
+		<tag k="ele" v="1595"/>
+		<tag k="name" v="Mendoza"/>
+		<tag k="place" v="city"/>
+		<tag k="wikidata" v="Q3305659"/>
+		<tag k="wikipedia" v="en:Mendoza, Peru"/>
+	</node>
+	<node id="7370403825" lat="-9.1221157" lon="-78.5309749" version="4" timestamp="2020-06-17T22:38:24Z" changeset="0">
+		<tag k="ele" v="23"/>
+		<tag k="name" v="Buenos Aires"/>
+		<tag k="place" v="town"/>
+		<tag k="alt_name" v="Nuevo Chimbote"/>
+		<tag k="population" v="159321"/>
+	</node>
+	<node id="7985775004" lat="-4.2129211" lon="-69.9425963" version="3" timestamp="2020-11-07T16:47:49Z" changeset="0">
+		<tag k="name" v="Leticia"/>
+		<tag k="place" v="town"/>
+		<tag k="population" v="66000"/>
+		<tag k="start_date" v="1867-04-25"/>
+		<tag k="website" v="http://www.leticia-amazonas.gov.co/"/>
+		<tag k="wikidata" v="Q214913"/>
+		<tag k="wikipedia" v="es:Leticia (Colombia)"/>
+	</node>
+</osm>

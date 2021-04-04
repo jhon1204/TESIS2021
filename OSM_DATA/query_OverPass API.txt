@@ -1,0 +1,2 @@
+[out:xml];(node(-12.0605,-77.0566,-12.0350,-77.0026);<;);out meta;
+https://overpass-turbo.eu/
