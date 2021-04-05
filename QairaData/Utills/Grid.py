@@ -2,6 +2,8 @@ from Distance import altoLargo,getCoordinates
 from Qaira import Qaira
 from Sensors import Sensors
 import math
+from IDW import IDW
+import json
 degrees=0.001*200/111      #how many degrees are 200m
 class MyGrid:
     def __init__(self):
@@ -81,7 +83,19 @@ class MyGrid:
                 metricsCoord.append([response["lat"],response["lon"]])
         
              
-        return self.getIDW(metricsCO,metricsH2S,metricsNO2,metricsO3,metricsPM10,metricsPM25,metricsSO2,metricsCoord)
+        return self.getIDW(metricsCO,metricsH2S,metricsNO2,metricsO3,metricsPM10,metricsPM25,metricsSO2,metricsCoord,midpoint)
     
-    def getIDW(self,metricsCO,metricsH2S,metricsNO2,metricsO3,metricsPM10,metricsPM25,metricsSO2,metricsCoord):
-        return []
+    def getIDW(self,metricsCO,metricsH2S,metricsNO2,metricsO3,metricsPM10,metricsPM25,metricsSO2,metricsCoord,midpoint):
+        f = open("../Configuration/config.json",)
+        data = json.load(f)
+        self.idw=IDW(data['p'])
+        self.idw.setWeights(midpoint[0],midpoint[1],metricsCoord)
+        idwResponse={}
+        idwResponse['CO'] = self.idw.calculateIDW(metricsCO)
+        idwResponse['H2S'] = self.idw.calculateIDW(metricsH2S)
+        idwResponse['NO2'] = self.idw.calculateIDW(metricsNO2)
+        idwResponse['O3'] = self.idw.calculateIDW(metricsO3)
+        idwResponse['PM10'] = self.idw.calculateIDW(metricsPM10)
+        idwResponse['PM25'] = self.idw.calculateIDW(metricsPM25)
+        idwResponse['SO2'] = self.idw.calculateIDW(metricsSO2)
+        return idwResponse
