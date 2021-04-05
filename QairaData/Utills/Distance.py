@@ -1,4 +1,5 @@
 import math
+import json
 ''' Haversine implementation adapted from: 
 https://stackoverflow.com/questions/27928/calculate-distance-between-two-latitude-longitude-points-haversine-formula'''
 
@@ -13,15 +14,21 @@ def getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2):
 
 def deg2rad(deg):
   return deg * (math.pi/180)
+def getCoordinates():
+  f = open("../Configuration/config.json",)
+  data = json.load(f)
+  return [data['southLat'],data['westLon'],data['northLat'],data['eastLon']]
 
 def altoLargo():
-    largo=getDistanceFromLatLonInKm(-12.0350,-77.0566,-12.0350,-77.0026)
-    alto=getDistanceFromLatLonInKm(-12.0350,-77.0566,-12.0605,-77.0566)
-    print()
-    print(f"El largo es: {largo} km")
-    print(f"El alto es:{alto} km")
-    print("----------------------------------------------------------------------------------------")
-    print(f"Él área del mapa con la que se va a trabajar es de {alto*largo} Km^2")
-    print()
-    return [alto,largo]
+  f = open("../Configuration/config.json",)
+  data = json.load(f)
+  largo=getDistanceFromLatLonInKm(data['northLat'],data['westLon'],data['northLat'],data['eastLon'])
+  alto=getDistanceFromLatLonInKm(data['northLat'],data['westLon'],data['southLat'],data['westLon'])
+  print()
+  print(f"El largo es: {largo} km")
+  print(f"El alto es:{alto} km")
+  print("----------------------------------------------------------------------------------------")
+  print(f"Él área del mapa con la que se va a trabajar es de {alto*largo} Km^2")
+  print()
+  return [alto,largo]
 

@@ -1,3 +1,8 @@
 {
-    "qairaUrl":"https://qairamapnapi.qairadrones.com/api/average_valid_processed_period/"
+    "qairaUrl":"https://qairamapnapi.qairadrones.com/api/average_valid_processed_period/",
+    "southLat":-12.0605,
+    "northLat":-12.0350,
+    "westLon":-77.0566,
+    "eastLon":-77.0026
+
 }
