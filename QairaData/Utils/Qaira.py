@@ -15,10 +15,28 @@ class Qaira:
         self.url=data['qairaUrl']
         self.mydb=SQLConn.connect(user=data['username'],password=data['password'],host=data['host'],database=data['database'])
 
+    def getAll(self):
+        cursor=self.mydb.cursor(buffered=True)
+        try:
+            getSensors=('select * from qaira_sensors')
+            cursor.execute(getSensors)
+            sensors=list(cursor.fetchall())
+            for (qHawax_ID,company,activo,lat,lon) in sensors:
+                self.getAirQuality(qHawax_ID)
+        except Error as error:
+            print(error)
+        finally:
+            cursor.close()
+            
+
     def getAirQuality (self,ID,initial_timestamp=datetime.utcnow()):
-        parameters = "?qhawax_id="+str(ID)+"&company_id=3&initial_timestamp="+initial_timestamp.strftime("%d-%m-%Y %H:%M:%S")+"&final_timestamp="+initial_timestamp.strftime("%d-%m-%Y %H:%M:%S")
+        YEAR = str(initial_timestamp.year)
+        MONTH = str(initial_timestamp.month).zfill(2)
+        DATE = str(initial_timestamp.day).zfill(2)
+        HOUR = str(initial_timestamp.hour).zfill(2)
+        parameters = "?qhawax_id="+str(ID)+"&company_id=3&initial_timestamp="+DATE+'-'+MONTH+'-'+YEAR+' '+HOUR+':00:00'+"&final_timestamp="+DATE+'-'+MONTH+'-'+YEAR+' '+HOUR+':00:00'
         response = requests.get(self.url+parameters)
-        if response.status_code ==200:
+        if response.status_code ==200 and len(response.json())==1:
             self.saveToDB(response.json()[len(response.json())-1],ID)
             return response.json()[len(response.json())-1]
         else:
@@ -52,12 +70,13 @@ class Qaira:
             getPollutants =("Select * from pollutant")
             cursor.execute(getPollutants)
             for (idPollutant,pollutantName,pollutantMetric) in cursor:
-                getMetrics=('select * from metricslima where qHawaxID=%(id)s and timestamp=%(timestam)s and %(pollutant)s')
+                getMetrics=('select * from metricslima where qHawaxID=%(id)s and timestamp=%(timestam)s and idPollutant=%(pollutant)s')
                 insertMeasure=('Insert into metricslima ''(qHawaxID,timestamp,idPollutant,Value)''values (%(id)s,%(timestam)s,%(pollutant)s,%(val)s)')
                 timestamp= datetime.strptime(response['timestamp_zone'],'%a, %d %b %Y %H:%M:%S GMT')
                 cursor=self.mydb.cursor(buffered=True)
                 mdata={'id':ID,'timestam':timestamp,'pollutant':idPollutant}
                 cursor.execute(getMetrics,mdata)
+                print('id: ',ID,'------rowcount:  ',cursor.rowcount,'  pollutant: ',pollutantName)
                 if cursor.rowcount==0:
                     if pollutantName not in ("PM10","PM25"):
                         measure= {'id':ID,'timestam':timestamp,'pollutant':idPollutant,'val':response[pollutantName+'_ug_m3']}
@@ -100,4 +119,8 @@ class Qaira:
             except Error as error:
                 print(error)
             finally:
-                cursor.close
+                cursor.close()
+
+if __name__=='__main__':
+    qaira=Qaira()
+    qaira.getAll()

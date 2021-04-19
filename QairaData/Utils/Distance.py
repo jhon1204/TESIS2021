@@ -15,12 +15,15 @@ def getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2):
 def deg2rad(deg):
   return deg * (math.pi/180)
 def getCoordinates():
-  f = open("../Configuration/config.json",)
+  """Loading configuration for the database requests"""
+  f = open("C:\\Users\\Jhon\\Documents\\TESIS\\Proyecto\\TESIS2021\\QairaData\\Configuration\\config.json","r")
   data = json.load(f)
   return [data['southLat'],data['westLon'],data['northLat'],data['eastLon']]
 
 def altoLargo():
-  f = open("../Configuration/config.json",)
+  """Loading configuration for the database requests"""
+  f = open("C:\\Users\\Jhon\\Documents\\TESIS\\Proyecto\\TESIS2021\\QairaData\\Configuration\\config.json","r")
+  # Development route
   data = json.load(f)
   largo=getDistanceFromLatLonInKm(data['northLat'],data['westLon'],data['northLat'],data['eastLon'])
   alto=getDistanceFromLatLonInKm(data['northLat'],data['westLon'],data['southLat'],data['westLon'])

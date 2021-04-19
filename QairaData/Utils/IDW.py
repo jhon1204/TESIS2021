@@ -3,6 +3,7 @@ from Distance import getDistanceFromLatLonInKm
 """
 IDW implementation adapted from : 'https://www.geodose.com/2019/09/creating-idw-interpolation-from-scratch-python.html'
 """
+degrees=0.001*100/111 
 class IDW:
     def __init__(self,p=2):
         self.p=p
@@ -12,7 +13,7 @@ class IDW:
         self.weights=[]
         for coord in metricsCoord:
             d=getDistanceFromLatLonInKm(x,y,coord[0],coord[1])*1000 # Transform to meters
-            if d>0:
+            if d>0 and abs(x-coord[0])>degrees and abs(x-coord[0])>degrees: # makes sure that is in the cell
                 w=1/(d**self.p)
                 self.weights.append(w)
             else:
