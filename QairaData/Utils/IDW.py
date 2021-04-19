@@ -13,7 +13,7 @@ class IDW:
         self.weights=[]
         for coord in metricsCoord:
             d=getDistanceFromLatLonInKm(x,y,coord[0],coord[1])*1000 # Transform to meters
-            if d>0 and abs(x-coord[0])>degrees and abs(x-coord[0])>degrees: # makes sure that is in the cell
+            if d>0 and abs(x-coord[0])>degrees and abs(x-coord[0])>degrees: # makes sure that is not in the cell
                 w=1/(d**self.p)
                 self.weights.append(w)
             else:

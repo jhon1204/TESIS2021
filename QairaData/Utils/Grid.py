@@ -88,19 +88,44 @@ class MyGrid:
             for j in range(sizeY):
                 self.matrix[i][j]['pollutants']=self.getInterpolated(self.matrix[i][j]['midpoint'])
                 try:
-                    insertIP=("insert into interpolatedmetrics(idinterpolation_algorithm,idcell,idPollutant,interpolatedValiue,timestamp) values (%(algorithm)s,%(id)s,%(poll)s,%(val)s,%(time)s)")
-                    cursor = self.mydb.cursor(buffered=True)
-                    getPoll= ("select * from pollutant")
-                    cursor.execute(getPoll)
-                    pollutants  = list(cursor.fetchall())
-                    print('poll  ',pollutants,'----------')
-                    cursor.close()
-                    for (idpoll,polName,metric) in pollutants:
-                        print('metrics: ',polName,'--------',self.matrix[i][j]['pollutants'][polName])
-                        values={'algorithm':'IDW', 'id': str(i).zfill(2) +'_'+str(j).zfill(2), 'poll':int(idpoll),'val':float(self.matrix[i][j]['pollutants'][polName]),'time':timestamp }
-                        cursor=self.mydb.cursor(buffered=True)
-                        cursor.execute(insertIP,values)
-                        self.mydb.commit()
+                    count=0
+                    try:
+                        cursorQ=self.mydb.cursor(buffered=True)
+                        query= ("select * from interpolatedmetrics limit 1")
+                        cursorQ.execute(query)
+                        count=cursorQ.rowcount
+                    except Error as error:
+                        print(error)
+                    finally:
+                        cursorQ.close()
+                    if count==0:
+                        insertIP=("insert into interpolatedmetrics(idinterpolation_algorithm,idcell,idPollutant,interpolatedValiue,timestamp) values (%(algorithm)s,%(id)s,%(poll)s,%(val)s,%(time)s)")
+                        cursor = self.mydb.cursor(buffered=True)
+                        getPoll= ("select * from pollutant")
+                        cursor.execute(getPoll)
+                        pollutants  = list(cursor.fetchall())
+                        print('poll  ',pollutants,'----------')
+                        cursor.close()
+                        for (idpoll,polName,metric) in pollutants:
+                            print('metrics: ',polName,'--------',self.matrix[i][j]['pollutants'][polName])
+                            values={'algorithm':'IDW', 'id': str(i).zfill(2) +'_'+str(j).zfill(2), 'poll':int(idpoll),'val':float(self.matrix[i][j]['pollutants'][polName]),'time':timestamp }
+                            cursor=self.mydb.cursor(buffered=True)
+                            cursor.execute(insertIP,values)
+                            self.mydb.commit()
+                    else:
+                        updateIP=("update interpolatedmetrics set interpolatedValiue=%(val)s, timestamp=%(time)s where idinterpolation_algorithm=%(algorithm)s and idcell=%(id)s and idPollutant=%(poll)s ")
+                        cursor = self.mydb.cursor(buffered=True)
+                        getPoll= ("select * from pollutant")
+                        cursor.execute(getPoll)
+                        pollutants  = list(cursor.fetchall())
+                        print('poll  ',pollutants,'----------u')
+                        cursor.close()
+                        for (idpoll,polName,metric) in pollutants:
+                            print('metrics: ',polName,'--------',self.matrix[i][j]['pollutants'][polName])
+                            values={'algorithm':'IDW', 'id': str(i).zfill(2) +'_'+str(j).zfill(2), 'poll':int(idpoll),'val':float(self.matrix[i][j]['pollutants'][polName]),'time':timestamp }
+                            cursor=self.mydb.cursor(buffered=True)
+                            cursor.execute(updateIP,values)
+                            self.mydb.commit()
                 except Error as error:
                     print(error)
                 finally:
