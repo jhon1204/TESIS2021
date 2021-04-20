@@ -26,15 +26,16 @@ class TestGrid(unittest.TestCase):
         grid=MyGrid()
         grid.initializeMatrix()
         grid.updateAQMatrix()
-        cell0_0={'CO': 2008.8620880424091, 'H2S': 20.229989798588093, 'NO2': 78.92910401178264, 'O3': 65.07853301248132, 'PM10': 68.5375929390606, 'PM25': 21.083110889673325, 'SO2': 14.587962958667989}
-        cell1_2={'CO': 2010.400510122323, 'H2S': 20.210651131195515, 'NO2': 78.92180599639161, 'O3': 65.07936740621825, 'PM10': 67.74699914727245, 'PM25': 21.009710784361847, 'SO2': 14.477238363309402}
-        cell0_9={'CO': 2538.796731158202, 'H2S': 21.693143639336043, 'NO2': 77.99873055404586, 'O3': 64.70843075625719, 'PM10': 70.72366196536949, 'PM25': 21.427175371889103, 'SO2': 11.439026368121965}
+        cell0_0={'CO': 1182.6161416198095, 'H2S': 14.67262796298921, 'NO2': 73.92981327290985, 'O3': 64.3148956116276, 'PM10': 77.07262249431716, 'PM25': 21.64832321574118, 'SO2': 16.35321889599812}
+        cell1_2={'CO': 1187.505020112994, 'H2S': 14.587687458418387, 'NO2': 73.74343575088561, 'O3': 64.2434805257983, 'PM10': 75.93127750211394, 'PM25': 21.356088687953775, 'SO2': 16.241950339270552}
+        cell0_9={'CO': 1324.8761620875737, 'H2S': 16.663813539099436, 'NO2': 75.45807078816495, 'O3': 67.84867286621923, 'PM10': 79.91151859594693, 'PM25': 22.319215750718197, 'SO2': 13.569559891055327}
+        
         for key in cell0_0.keys():
-            self.assertAlmostEqual(grid.matrix[0][0]['pollutants'][key],cell0_0[key],'Error in updating matrix')
+            self.assertEqual(grid.matrix[0][0]['pollutants'][key],cell0_0[key],'Error in updating matrix')
         for key in cell1_2.keys():
-            self.assertAlmostEqual(grid.matrix[1][2]['pollutants'][key],cell1_2[key],'Error in updating matrix')
+            self.assertEqual(grid.matrix[1][2]['pollutants'][key],cell1_2[key],'Error in updating matrix')
         for key in cell0_9.keys():
-            self.assertAlmostEqual(grid.matrix[0][9]['pollutants'][key],cell0_9[key],'Error in updating matrix')
+            self.assertEqual(grid.matrix[0][9]['pollutants'][key],cell0_9[key],'Error in updating matrix')
 
     def testGetIDW(self):
         grid=MyGrid()
