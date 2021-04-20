@@ -18,6 +18,7 @@ def getCoordinates():
   """Loading configuration for the database requests"""
   f = open("C:\\Users\\Jhon\\Documents\\TESIS\\Proyecto\\TESIS2021\\QairaData\\Configuration\\config.json","r")
   data = json.load(f)
+  f.close()
   return [data['southLat'],data['westLon'],data['northLat'],data['eastLon']]
 
 def altoLargo():
@@ -25,6 +26,7 @@ def altoLargo():
   f = open("C:\\Users\\Jhon\\Documents\\TESIS\\Proyecto\\TESIS2021\\QairaData\\Configuration\\config.json","r")
   # Development route
   data = json.load(f)
+  f.close()
   largo=getDistanceFromLatLonInKm(data['northLat'],data['westLon'],data['northLat'],data['eastLon'])
   alto=getDistanceFromLatLonInKm(data['northLat'],data['westLon'],data['southLat'],data['westLon'])
   print()

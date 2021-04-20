@@ -1,8 +1,12 @@
 from Distance import altoLargo,getCoordinates
+# Import should be like from Utils.Distance import altoLargo,getCoordinates, if testing
 from Qaira import Qaira
+# Import should be like from Utils.Qaira import Qaira, if testing
 from Sensors import Sensors
+# Import should be like from Utils.Sensors import Sensors, if testing
 import math
 from IDW import IDW
+# Import should be like from Utils.IDW import IDW, if testing
 import json
 import mysql.connector as SQLConn
 from mysql.connector import Error
@@ -214,6 +218,7 @@ class MyGrid:
         """Loading configuration for the api requests"""
         f = open("C:\\Users\\Jhon\\Documents\\TESIS\\Proyecto\\TESIS2021\\QairaData\\Configuration\\config.json","r") # Development route
         data = json.load(f)
+        f.close()
         self.idw=IDW(data['p'])
         self.idw.setWeights(midpoint[0],midpoint[1],metricsCoord)
         idwResponse={}
