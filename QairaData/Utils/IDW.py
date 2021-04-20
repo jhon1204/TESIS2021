@@ -1,5 +1,5 @@
 import numpy as np
-from Utils.Distance import getDistanceFromLatLonInKm
+from Distance import getDistanceFromLatLonInKm
 # import should be like from Utils.Distance import getDistanceFromLatLonInKm, if testing
 """
 IDW implementation adapted from : 'https://www.geodose.com/2019/09/creating-idw-interpolation-from-scratch-python.html'

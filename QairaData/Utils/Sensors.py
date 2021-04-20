@@ -4,7 +4,7 @@ from datetime import datetime,date,timedelta
 import os
 import mysql.connector as SQLConn
 from mysql.connector import Error
-from Utils.Distance import getDistanceFromLatLonInKm
+from Distance import getDistanceFromLatLonInKm
 # import should be like from Utils.Distance import getDistanceFromLatLonInKm, if testing class
 class Sensors:
     def __init__(self):
