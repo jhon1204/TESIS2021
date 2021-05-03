@@ -1,0 +1,8 @@
+idPollutant,pollutantName,pollutantMetric
+1,CO,ug/m3
+2,H2S,ug/m3
+3,NO2,ug/m3
+4,O3,ug/m3
+5,PM10,ug/m3
+6,PM25,ug/m3
+7,SO2,ug/m3

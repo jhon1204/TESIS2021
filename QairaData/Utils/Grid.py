@@ -55,7 +55,7 @@ class MyGrid:
                     cells= list(cursor1.fetchall())
                     if len(cells)==0:
                         insertGrid=("insert into cellsData(idcell,midLat,midLon) values (%(id)s,%(lat)s,%(lon)s)")
-                        values= { 'id': str(i).zfill(2) +'_'+str(j).zfill(2), 'lat': self.matrix[i][j]['midpoint'][0], 'lon': self.matrix[i][j]['midpoint'][0]}
+                        values= { 'id': str(i).zfill(2) +'_'+str(j).zfill(2), 'lat': self.matrix[i][j]['midpoint'][0], 'lon': self.matrix[i][j]['midpoint'][1]}
                         try:
                             cursor = self.mydb.cursor(buffered=True)
                             cursor.execute(insertGrid,values)
@@ -102,7 +102,7 @@ class MyGrid:
                         print(error)
                     finally:
                         cursorQ.close()
-                    if count==0:
+                    if count<sizeX*sizeY*7:
                         insertIP=("insert into interpolatedmetrics(idinterpolation_algorithm,idcell,idPollutant,interpolatedValiue,timestamp) values (%(algorithm)s,%(id)s,%(poll)s,%(val)s,%(time)s)")
                         cursor = self.mydb.cursor(buffered=True)
                         getPoll= ("select * from pollutant")
