@@ -29,12 +29,13 @@ class Qaira:
             cursor.close()
             
 
-    def getAirQuality (self,ID,initial_timestamp=datetime.utcnow()):
+    def getAirQuality (self,ID,initial_timestamp=datetime.now()):
         YEAR = str(initial_timestamp.year)
         MONTH = str(initial_timestamp.month).zfill(2)
         DATE = str(initial_timestamp.day).zfill(2)
         HOUR = str(initial_timestamp.hour).zfill(2)
         parameters = "?qhawax_id="+str(ID)+"&company_id=3&initial_timestamp="+DATE+'-'+MONTH+'-'+YEAR+' '+HOUR+':00:00'+"&final_timestamp="+DATE+'-'+MONTH+'-'+YEAR+' '+HOUR+':00:00'
+        print(parameters)
         response = requests.get(self.url+parameters)
         if response.status_code ==200 and len(response.json())==1:
             self.saveToDB(response.json()[len(response.json())-1],ID)

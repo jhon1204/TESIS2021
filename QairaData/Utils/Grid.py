@@ -86,8 +86,9 @@ class MyGrid:
         YEAR = str(datetime.date.today().year)
         MONTH = str(datetime.date.today().month).zfill(2)
         DATE = str(datetime.date.today().day).zfill(2)
-        HOUR = str(datetime.datetime.utcnow().hour).zfill(2)
+        HOUR = str(datetime.datetime.now().hour).zfill(2)
         timestamp = datetime.datetime.strptime( YEAR+'-'+MONTH+'-'+DATE+' '+HOUR+':00:00', '%Y-%m-%d %H:%M:%S')
+        first =False
         for i in range(sizeX):
             for j in range(sizeY):
                 self.matrix[i][j]['pollutants']=self.getInterpolated(self.matrix[i][j]['midpoint'])
@@ -98,11 +99,13 @@ class MyGrid:
                         query= ("select * from interpolatedmetrics limit 1")
                         cursorQ.execute(query)
                         count=cursorQ.rowcount
+                        if i==0 and j==0 and count==0 :
+                            first=True
                     except Error as error:
                         print(error)
                     finally:
                         cursorQ.close()
-                    if count<sizeX*sizeY*7:
+                    if first:
                         insertIP=("insert into interpolatedmetrics(idinterpolation_algorithm,idcell,idPollutant,interpolatedValiue,timestamp) values (%(algorithm)s,%(id)s,%(poll)s,%(val)s,%(time)s)")
                         cursor = self.mydb.cursor(buffered=True)
                         getPoll= ("select * from pollutant")
@@ -165,7 +168,7 @@ class MyGrid:
         metricsPM25=[]
         metricsSO2=[]
         metricsCoord=[]
-        initial_timestamp=datetime.datetime.utcnow()
+        initial_timestamp=datetime.datetime.now()
         for sensorID in ids:
             YEAR = str(initial_timestamp.year)
             MONTH = str(initial_timestamp.month).zfill(2)
