@@ -1,11 +1,11 @@
-from Distance import altoLargo,getCoordinates
+from Utils.Distance import altoLargo,getCoordinates
 # Import should be like from Utils.Distance import altoLargo,getCoordinates, if testing
-from Qaira import Qaira
+from Utils.Qaira import Qaira
 # Import should be like from Utils.Qaira import Qaira, if testing
-from Sensors import Sensors
+from Utils.Sensors import Sensors
 # Import should be like from Utils.Sensors import Sensors, if testing
 import math
-from IDW import IDW
+from Utils.IDW import IDW
 # Import should be like from Utils.IDW import IDW, if testing
 import json
 import mysql.connector as SQLConn
