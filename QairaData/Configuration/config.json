@@ -6,9 +6,11 @@
     "eastLon":-77.0026,
     "p": 2,
     "host":"localhost",
-    "username":"root",
+    "port": "5432",
+    "username":"postgres",
     "password":"jhon1204",
-    "database":"mydb"
+    "database":"postgres",
+    "schema":"mydb" 
 
 
 }

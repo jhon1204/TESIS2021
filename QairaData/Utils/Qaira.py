@@ -2,23 +2,25 @@ import json
 import requests
 from datetime import datetime,date,timedelta
 import os
-import mysql.connector as SQLConn
-from mysql.connector import Error
+import psycopg2
+from psycopg2 import DatabaseError as Error
 
 class Qaira:
     url = ""
+    schema = ""
     def __init__(self):
         """Loading configuration for the api requests"""
         f = open("C:\\Users\\Jhon\\Documents\\TESIS\\Proyecto\\TESIS2021\\QairaData\\Configuration\\config.json","r") # Development route
         data = json.load(f)
         f.close()
         self.url=data['qairaUrl']
-        self.mydb=SQLConn.connect(user=data['username'],password=data['password'],host=data['host'],database=data['database'])
+        self.schema=data['schema']
+        self.mydb=psycopg2.connect(host=data['host'],port=data['port'],database=data['database'],user=data['username'],password=data['password'])
 
     def getAll(self):
-        cursor=self.mydb.cursor(buffered=True)
+        cursor=self.mydb.cursor()
         try:
-            getSensors=('select * from qaira_sensors')
+            getSensors=('select * from {}.qaira_sensors'.format(self.schema))
             cursor.execute(getSensors)
             sensors=list(cursor.fetchall())
             for (qHawax_ID,company,activo,lat,lon) in sensors:
@@ -62,19 +64,19 @@ class Qaira:
     
     def saveToDB(self,response,ID=-1):
         if len(response)!=0:
-            cursor = self.mydb.cursor(buffered=True)
-            updateSensor= ('Update qaira_sensors set Activo=1 where qHawax_ID=%(id)s')
+            cursor = self.mydb.cursor()
+            updateSensor= ('Update {}.qaira_sensors set \"Activo\"=1 where \"qHawax_ID\"=%(id)s'.format(self.schema))
             data={'id':ID}
             cursor.execute(updateSensor,data)
             cursor.close()
-            cursor = self.mydb.cursor(buffered=True)
-            getPollutants =("Select * from pollutant")
+            cursor = self.mydb.cursor()
+            getPollutants =("Select * from {}.pollutant".format(self.schema))
             cursor.execute(getPollutants)
             for (idPollutant,pollutantName,pollutantMetric) in cursor:
-                getMetrics=('select * from metricslima where qHawaxID=%(id)s and timestamp=%(timestam)s and idPollutant=%(pollutant)s')
-                insertMeasure=('Insert into metricslima ''(qHawaxID,timestamp,idPollutant,Value)''values (%(id)s,%(timestam)s,%(pollutant)s,%(val)s)')
+                getMetrics=('select * from {}.metricslima where \"qHawaxID\"=%(id)s and \"timestamp\"=%(timestam)s and \"idPollutant\"=%(pollutant)s'.format(self.schema))
+                insertMeasure=('Insert into {}.metricslima '.format(self.schema)+'(\"qHawaxID\",\"timestamp\",\"idPollutant\",\"Value\")'+'values (%(id)s,%(timestam)s,%(pollutant)s,%(val)s)')
                 timestamp= datetime.strptime(response['timestamp_zone'],'%a, %d %b %Y %H:%M:%S GMT')
-                cursor=self.mydb.cursor(buffered=True)
+                cursor=self.mydb.cursor()
                 mdata={'id':ID,'timestam':timestamp,'pollutant':idPollutant}
                 cursor.execute(getMetrics,mdata)
                 print('id: ',ID,'------rowcount:  ',cursor.rowcount,'  pollutant: ',pollutantName)
@@ -85,7 +87,7 @@ class Qaira:
                         measure={'id':ID,'timestam':timestamp,'pollutant':idPollutant,'val':response[pollutantName]}
                     # Insert new measure
                     try:
-                        cursor = self.mydb.cursor(buffered=True)
+                        cursor = self.mydb.cursor()
                         cursor.execute(insertMeasure,measure)
                         self.mydb.commit()
                     except Error as error:
@@ -93,14 +95,14 @@ class Qaira:
                     finally:
                         cursor.close()
                 else:
-                    editMetric=('update metricslima set Value=%(val)s where qHawaxID=%(id)s and timestamp=%(timestam)s and idPollutant=%(pollutant)s')
+                    editMetric=('update {}.metricslima set \"Value\"=%(val)s where \"qHawaxID\"=%(id)s and \"timestamp\"=%(timestam)s and \"idPollutant\"=%(pollutant)s'.format(self.schema))
                     if pollutantName not in ("PM10","PM25"):
                         measure= {'id':ID,'timestam':timestamp,'pollutant':idPollutant,'val':response[pollutantName+'_ug_m3']}
                     else:
                         measure={'id':ID,'timestam':timestamp,'pollutant':idPollutant,'val':response[pollutantName]}
                     # Insert new measure
                     try:
-                        cursor = self.mydb.cursor(buffered=True)
+                        cursor = self.mydb.cursor()
                         cursor.execute(editMetric,measure)
                         self.mydb.commit()
                     except Error as error:
@@ -111,10 +113,10 @@ class Qaira:
 
         else:
             # set sensor as inactive
-            deactivateSensor= ('Update qaira_sensors set Activo=0 where qHawax_ID=%(id)s')
+            deactivateSensor= ('Update {}.qaira_sensors set \"Activo\"=0 where \"qHawax_ID\"=%(id)s'.format(self.schema))
             sensorData={'id':ID}
             try:
-                cursor = self.mydb.cursor(buffered=True)
+                cursor = self.mydb.cursor()
                 cursor.execute(deactivateSensor,sensorData)
                 self.mydb.commit()
             except Error as error:

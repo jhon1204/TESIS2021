@@ -8,19 +8,21 @@ import math
 from Utils.IDW import IDW
 # Import should be like from Utils.IDW import IDW, if testing
 import json
-import mysql.connector as SQLConn
-from mysql.connector import Error
+import psycopg2
+from psycopg2 import DatabaseError as Error
 import os
 import datetime
 degrees=0.001*100/111      #how many degrees are 100m
 class MyGrid:
+    schema=""
     def __init__(self):
         """Loading configuration for the database requests"""
         f = open("C:\\Users\\Jhon\\Documents\\TESIS\\Proyecto\\TESIS2021\\QairaData\\Configuration\\config.json","r")
         # Development route
         data = json.load(f)
         f.close()
-        self.mydb=SQLConn.connect(user=data['username'],password=data['password'],host=data['host'],database=data['database'])
+        self.mydb=psycopg2.connect(host=data['host'],port=data['port'],database=data['database'],user=data['username'],password=data['password'])
+        self.schema=data['schema']
         self.setted=False
         self.size=altoLargo()
         self.coordinates= getCoordinates()
@@ -49,15 +51,15 @@ class MyGrid:
                 
                 self.matrix[i][j]['midpoint']=midpoint
                 try:
-                    cursor1= self.mydb.cursor(buffered=True)
-                    getCells=('select * from cellsData')
+                    cursor1= self.mydb.cursor()
+                    getCells=('select * from {}.cellsData'.format(self.schema))
                     cursor1.execute(getCells)
                     cells= list(cursor1.fetchall())
                     if len(cells)==0:
-                        insertGrid=("insert into cellsData(idcell,midLat,midLon) values (%(id)s,%(lat)s,%(lon)s)")
+                        insertGrid=("insert into {}.cellsData(\"idcell\",\"midLat\",\"midLon\") values (%(id)s,%(lat)s,%(lon)s)".format(self.schema))
                         values= { 'id': str(i).zfill(2) +'_'+str(j).zfill(2), 'lat': self.matrix[i][j]['midpoint'][0], 'lon': self.matrix[i][j]['midpoint'][1]}
                         try:
-                            cursor = self.mydb.cursor(buffered=True)
+                            cursor = self.mydb.cursor()
                             cursor.execute(insertGrid,values)
                             self.mydb.commit()
                         except Error as error:
@@ -95,8 +97,8 @@ class MyGrid:
                 try:
                     count=0
                     try:
-                        cursorQ=self.mydb.cursor(buffered=True)
-                        query= ("select * from interpolatedmetrics limit 1")
+                        cursorQ=self.mydb.cursor()
+                        query= ("select * from {}.interpolatedmetrics limit 1".format(self.schema))
                         cursorQ.execute(query)
                         count=cursorQ.rowcount
                         if i==0 and j==0 and count==0 :
@@ -106,9 +108,9 @@ class MyGrid:
                     finally:
                         cursorQ.close()
                     if first:
-                        insertIP=("insert into interpolatedmetrics(idinterpolation_algorithm,idcell,idPollutant,interpolatedValiue,timestamp) values (%(algorithm)s,%(id)s,%(poll)s,%(val)s,%(time)s)")
-                        cursor = self.mydb.cursor(buffered=True)
-                        getPoll= ("select * from pollutant")
+                        insertIP=("insert into {}.interpolatedmetrics(\"idinterpolation_algorithm\",\"idcell\",\"idPollutant\",\"interpolatedValiue\",\"timestamp\") values (%(algorithm)s,%(id)s,%(poll)s,%(val)s,%(time)s)".format(self.schema))
+                        cursor = self.mydb.cursor()
+                        getPoll= ("select * from {}.pollutant".format(self.schema))
                         cursor.execute(getPoll)
                         pollutants  = list(cursor.fetchall())
                         print('poll  ',pollutants,'----------')
@@ -116,13 +118,13 @@ class MyGrid:
                         for (idpoll,polName,metric) in pollutants:
                             print('metrics: ',polName,'--------',self.matrix[i][j]['pollutants'][polName])
                             values={'algorithm':'IDW', 'id': str(i).zfill(2) +'_'+str(j).zfill(2), 'poll':int(idpoll),'val':float(self.matrix[i][j]['pollutants'][polName]),'time':timestamp }
-                            cursor=self.mydb.cursor(buffered=True)
+                            cursor=self.mydb.cursor()
                             cursor.execute(insertIP,values)
                             self.mydb.commit()
                     else:
-                        updateIP=("update interpolatedmetrics set interpolatedValiue=%(val)s, timestamp=%(time)s where idinterpolation_algorithm=%(algorithm)s and idcell=%(id)s and idPollutant=%(poll)s ")
-                        cursor = self.mydb.cursor(buffered=True)
-                        getPoll= ("select * from pollutant")
+                        updateIP=("update {}.interpolatedmetrics set \"interpolatedValiue\"=%(val)s, \"timestamp\"=%(time)s where \"idinterpolation_algorithm\"=%(algorithm)s and \"idcell\"=%(id)s and \"idPollutant\"=%(poll)s ".format(self.schema))
+                        cursor = self.mydb.cursor()
+                        getPoll= ("select * from {}.pollutant".format(self.schema))
                         cursor.execute(getPoll)
                         pollutants  = list(cursor.fetchall())
                         print('poll  ',pollutants,'----------u')
@@ -130,7 +132,7 @@ class MyGrid:
                         for (idpoll,polName,metric) in pollutants:
                             print('metrics: ',polName,'--------',self.matrix[i][j]['pollutants'][polName])
                             values={'algorithm':'IDW', 'id': str(i).zfill(2) +'_'+str(j).zfill(2), 'poll':int(idpoll),'val':float(self.matrix[i][j]['pollutants'][polName]),'time':timestamp }
-                            cursor=self.mydb.cursor(buffered=True)
+                            cursor=self.mydb.cursor()
                             cursor.execute(updateIP,values)
                             self.mydb.commit()
                 except Error as error:
@@ -175,9 +177,9 @@ class MyGrid:
             DATE = str(initial_timestamp.day).zfill(2)
             HOUR = str(initial_timestamp.hour).zfill(2)
             timestamp = datetime.datetime.strptime( YEAR+'-'+MONTH+'-'+DATE+' '+HOUR+':00:00', "%Y-%m-%d %H:%M:%S")
-            getMetrics= ("select a.qHawaxID,a.timestamp,a.idPollutant,a.Value,b.pollutantName,lat,lon from metricslima a,pollutant b, qaira_sensors c where a.idPollutant=b.idPollutant and a.qHawaxID=c.qHawax_ID  and a.qHawaxID=%(id)s and a.timestamp=%(time)s")
+            getMetrics= ("select a.\"qHawaxID\",a.\"timestamp\",a.\"idPollutant\",a.\"Value\",b.\"pollutantName\",c.\"lat\",c.\"lon\" from {}.metricslima a,{}.pollutant b, {}.qaira_sensors c where a.\"idPollutant\"=b.\"idPollutant\" and a.\"qHawaxID\"=c.\"qHawax_ID\"  and a.\"qHawaxID\"=%(id)s and a.\"timestamp\"=%(time)s".format(self.schema,self.schema,self.schema))
             values={'id':int(sensorID[0]),'time': timestamp}
-            cursor=self.mydb.cursor(buffered=True)
+            cursor=self.mydb.cursor()
             try:
                 cursor.execute(getMetrics,values)
                 metrics=list(cursor.fetchall())
@@ -194,6 +196,8 @@ class MyGrid:
                 #     values={'id':sensorID[0],'time': timestamp}
                 #     cursor.execute(getMetrics,values)
                 #     metrics=list(cursor.fetchall())
+                lat1=0
+                lon1=0
                 for (qhawax_id,timestamp,idpoll,metric,pollutantName,lat,lon) in metrics:
                     if pollutantName=='CO':
                         metricsCO.append(metric)
@@ -209,7 +213,9 @@ class MyGrid:
                         metricsPM25.append(metric)
                     if pollutantName=='SO2':
                         metricsSO2.append(metric)
-                metricsCoord.append([lat,lon])
+                    lat1=lat
+                    lon1=lon
+                metricsCoord.append([lat1,lon1])
             except Error as error:
                 print(error)
             finally:
@@ -223,6 +229,7 @@ class MyGrid:
         data = json.load(f)
         f.close()
         self.idw=IDW(data['p'])
+        print("MetricsCoord: ", len(metricsCoord)," ------------- - - - - - -- sadsd")
         self.idw.setWeights(midpoint[0],midpoint[1],metricsCoord)
         idwResponse={}
         idwResponse['CO'] = self.idw.calculateIDW(metricsCO)

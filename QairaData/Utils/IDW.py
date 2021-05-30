@@ -12,6 +12,7 @@ class IDW:
     
     def setWeights(self,x,y,metricsCoord):
         self.weights=[]
+        print("Setting weights: ", metricsCoord)
         for coord in metricsCoord:
             d=getDistanceFromLatLonInKm(x,y,coord[0],coord[1])*1000 # Transform to meters
             if d>0 and abs(x-coord[0])>degrees and abs(x-coord[0])>degrees: # makes sure that is not in the cell
@@ -21,6 +22,7 @@ class IDW:
                 self.weights.append(0)
     def calculateIDW(self,metrics):
         idwResult=0
+        print("metrics: ", metrics)
         if 0 in self.weights:
             index=self.weights.index(0)
             idwResult=metrics[index]
