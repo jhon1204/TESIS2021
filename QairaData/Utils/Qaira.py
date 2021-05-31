@@ -31,7 +31,7 @@ class Qaira:
             cursor.close()
             
 
-    def getAirQuality (self,ID,initial_timestamp=datetime.now()):
+    def getAirQuality (self,ID,initial_timestamp=datetime.now()-timedelta(hours=5)):
         YEAR = str(initial_timestamp.year)
         MONTH = str(initial_timestamp.month).zfill(2)
         DATE = str(initial_timestamp.day).zfill(2)

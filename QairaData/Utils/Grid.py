@@ -85,10 +85,11 @@ class MyGrid:
         # Save interpolation to DB            
         sizeX= len(self.matrix)
         sizeY= len(self.matrix[0])
-        YEAR = str(datetime.date.today().year)
-        MONTH = str(datetime.date.today().month).zfill(2)
-        DATE = str(datetime.date.today().day).zfill(2)
-        HOUR = str(datetime.datetime.now().hour).zfill(2)
+        datetimenow=datetime.datetime.now()-datetime.timedelta(hours=5)
+        YEAR = str(datetimenow.year)
+        MONTH = str(datetimenow.month).zfill(2)
+        DATE = str(datetimenow.day).zfill(2)
+        HOUR = str(datetimenow.hour).zfill(2)
         timestamp = datetime.datetime.strptime( YEAR+'-'+MONTH+'-'+DATE+' '+HOUR+':00:00', '%Y-%m-%d %H:%M:%S')
         first =False
         for i in range(sizeX):
@@ -170,7 +171,7 @@ class MyGrid:
         metricsPM25=[]
         metricsSO2=[]
         metricsCoord=[]
-        initial_timestamp=datetime.datetime.now()
+        initial_timestamp=datetime.datetime.now()-datetime.timedelta(hours=5)
         for sensorID in ids:
             YEAR = str(initial_timestamp.year)
             MONTH = str(initial_timestamp.month).zfill(2)
