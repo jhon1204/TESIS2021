@@ -8,8 +8,8 @@
     "p": 2,
     "host":"localhost",
     "port": "5432",
-    "username":"postgres",
-    "password":"jhon1204",
+    "username":"ia_user",
+    "password":"CalidadAire2020",
     "database":"postgres",
     "schema":"mydb" 
 
