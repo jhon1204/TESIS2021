@@ -1,5 +1,6 @@
 {
     "qairaUrl":"https://qairamapnapi.qairadrones.com/api/average_valid_processed_period/",
+    "routingUrl":"http://localhost:8989/route",
     "southLat":-12.0605,
     "northLat":-12.0350,
     "westLon":-77.0566,
