@@ -10,7 +10,7 @@ class Sensors:
     schema=""
     def __init__(self):
         """Loading configuration for the database requests"""
-        f = open("C:\\Users\\Jhon\\Documents\\TESIS\\Proyecto\\TESIS2021\\QairaData\\Configuration\\config.json","r")
+        f = open("/home/ubuntu/Benites/TESIS2021/QairaData/Configuration/config.json","r")
         # Development route
         data = json.load(f)
         f.close()

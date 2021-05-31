@@ -17,7 +17,7 @@ app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 cron = Scheduler(daemon=True)
 cron.start()
-f = open("C:\\Users\\Jhon\\Documents\\TESIS\\Proyecto\\TESIS2021\\QairaData\\Configuration\\config.json","r") # Development route
+f = open("/home/ubuntu/Benites/TESIS2021/QairaData/Configuration/config.json","r") # Development route
 data = json.load(f)
 f.close()
 schema=data['schema']
