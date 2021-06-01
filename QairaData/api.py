@@ -1,4 +1,3 @@
-from logging import exception
 import flask
 from flask import request, jsonify
 import requests
@@ -192,4 +191,4 @@ def updateAQMap():
 
 atexit.register(lambda: cron.shutdown(wait=False))
 if __name__=="__main__":
-    app.run()
+    app.run(host='0.0.0.0')
