@@ -1,4 +1,6 @@
 import flask
+from flask_socketio import SocketIO
+from flask_cors import CORS, cross_origin
 from flask import request, jsonify
 import requests
 from Utils.Qaira import Qaira
@@ -13,6 +15,10 @@ from datetime import datetime,date,timedelta
 
 
 app = flask.Flask(__name__)
+socketio = SocketIO(app,cors_allowed_origins="*",async_handlers=True)
+CORS(app)
+
+
 app.config["DEBUG"] = True
 cron = Scheduler(daemon=True)
 cron.start()
@@ -191,4 +197,4 @@ def updateAQMap():
 
 atexit.register(lambda: cron.shutdown(wait=False))
 if __name__=="__main__":
-    app.run(host='0.0.0.0')
+    socketio.run(app,host='0.0.0.0')
