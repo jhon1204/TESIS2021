@@ -15,11 +15,10 @@ from datetime import datetime,date,timedelta
 
 
 app = flask.Flask(__name__)
+app.config["DEBUG"] = True
 socketio = SocketIO(app,cors_allowed_origins="*",async_handlers=True)
 CORS(app)
 
-
-app.config["DEBUG"] = True
 cron = Scheduler(daemon=True)
 cron.start()
 f = open("/home/ubuntu/Benites/TESIS2021/QairaData/Configuration/config.json","r") # Development route
@@ -72,7 +71,6 @@ def getSensors():
             param={'timestam':timestamp,'poll':pollutant}
             cursor=mydb.cursor()
             cursor.execute(getPollutants,param)
-            
             sensors=list(cursor.fetchall())
             for (qhawax_id,lat,lon,value) in sensors:
                 sensor={'id':qhawax_id,'lat':lat,'lon':lon, 'pollutantValue':value}
@@ -197,4 +195,5 @@ def updateAQMap():
 
 atexit.register(lambda: cron.shutdown(wait=False))
 if __name__=="__main__":
-    socketio.run(app,host='0.0.0.0')
+    socketio.run(app,host='0.0.0.0', port=5001)
+
