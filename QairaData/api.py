@@ -21,7 +21,7 @@ CORS(app)
 
 cron = Scheduler(daemon=True)
 cron.start()
-f = open("/home/ubuntu/Benites/TESIS2021/QairaData/Configuration/config.json","r") # Development route
+f = open("C:\\Users\\Jhon\\Documents\\TESIS\Proyecto\\TESIS2021\\QairaData\\Configuration\\config.json","r") # Development route
 data = json.load(f)
 f.close()
 schema=data['schema']
@@ -195,5 +195,5 @@ def updateAQMap():
 
 atexit.register(lambda: cron.shutdown(wait=False))
 if __name__=="__main__":
-    socketio.run(app,host='0.0.0.0', port=5001)
+    socketio.run(app,host='127.0.0.1', port=5001)
 

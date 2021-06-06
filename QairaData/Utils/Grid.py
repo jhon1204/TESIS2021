@@ -17,7 +17,7 @@ class MyGrid:
     schema=""
     def __init__(self):
         """Loading configuration for the database requests"""
-        f = open("/home/ubuntu/Benites/TESIS2021/QairaData/Configuration/config.json","r")
+        f = open("C:\\Users\\Jhon\\Documents\\TESIS\Proyecto\\TESIS2021\\QairaData\\Configuration\\config.json","r")
         # Development route
         data = json.load(f)
         f.close()
@@ -34,42 +34,52 @@ class MyGrid:
     def initializeMatrix(self):
         sizeX= len(self.matrix)
         sizeY= len(self.matrix[0])
-        for i in range(sizeX):
-            for j in range(sizeY):
-                midpoint=[0,0]
-                midpoint[0] = self.coordinates[2]-(i*degrees)-(degrees/2)
-                midpoint[1] = self.coordinates[1]+(j*degrees)+(degrees/2)
-                # if i != sizeX-1:
-                #     midpoint[0]= self.coordinates[2]-(i*degrees)-(degrees/2) 
-                # else:
-                #     midpoint[0]= self.coordinates[0]+((abs(self.coordinates[0]-self.coordinates[2])-(i*degrees))/2)
-                
-                # if j != sizeY-1:
-                #     midpoint[1]= self.coordinates[1]+(j*degrees)+(degrees/2)
-                # else:
-                #     midpoint[1]= self.coordinates[3]-((abs(self.coordinates[3]-self.coordinates[1])-(j*degrees))/2)
-                
-                self.matrix[i][j]['midpoint']=midpoint
-                try:
-                    cursor1= self.mydb.cursor()
-                    getCells=('select * from {}.cellsData'.format(self.schema))
-                    cursor1.execute(getCells)
-                    cells= list(cursor1.fetchall())
-                    if len(cells)==0:
-                        insertGrid=("insert into {}.cellsData(\"idcell\",\"midLat\",\"midLon\") values (%(id)s,%(lat)s,%(lon)s)".format(self.schema))
-                        values= { 'id': str(i).zfill(2) +'_'+str(j).zfill(2), 'lat': self.matrix[i][j]['midpoint'][0], 'lon': self.matrix[i][j]['midpoint'][1]}
-                        try:
-                            cursor = self.mydb.cursor()
-                            cursor.execute(insertGrid,values)
-                            self.mydb.commit()
-                        except Error as error:
-                            print(error)
-                        finally:
-                            cursor.close()
-                except Error as error:
-                    print(error)
-                finally:
-                    cursor1.close()
+        try:
+            cursor0= self.mydb.cursor()
+            getCells=('select * from {}.cellsData'.format(self.schema))
+            cursor0.execute(getCells)
+            cells= list(cursor0.fetchall())
+        except Error as error:
+            print(error)
+        finally:
+            cursor0.close()
+        if len(cells)==0:
+            for i in range(sizeX):
+                for j in range(sizeY):
+                    midpoint=[0,0]
+                    midpoint[0] = self.coordinates[2]-(i*degrees)-(degrees/2)
+                    midpoint[1] = self.coordinates[1]+(j*degrees)+(degrees/2)
+                    # if i != sizeX-1:
+                    #     midpoint[0]= self.coordinates[2]-(i*degrees)-(degrees/2) 
+                    # else:
+                    #     midpoint[0]= self.coordinates[0]+((abs(self.coordinates[0]-self.coordinates[2])-(i*degrees))/2)
+                    
+                    # if j != sizeY-1:
+                    #     midpoint[1]= self.coordinates[1]+(j*degrees)+(degrees/2)
+                    # else:
+                    #     midpoint[1]= self.coordinates[3]-((abs(self.coordinates[3]-self.coordinates[1])-(j*degrees))/2)
+                    
+                    self.matrix[i][j]['midpoint']=midpoint
+
+                    insertGrid=("insert into {}.cellsData(\"idcell\",\"midLat\",\"midLon\") values (%(id)s,%(lat)s,%(lon)s)".format(self.schema))
+                    values= { 'id': str(i).zfill(2) +'_'+str(j).zfill(2), 'lat': self.matrix[i][j]['midpoint'][0], 'lon': self.matrix[i][j]['midpoint'][1]}
+                    try:
+                        cursor = self.mydb.cursor()
+                        cursor.execute(insertGrid,values)
+                        self.mydb.commit()
+                    except Error as error:
+                        print(error)
+                    finally:
+                        cursor.close()
+
+        else:
+            for i in range(sizeX):
+                for j in range(sizeY):
+                    midpoint=[0,0]
+                    midpoint[0] = self.coordinates[2]-(i*degrees)-(degrees/2)
+                    midpoint[1] = self.coordinates[1]+(j*degrees)+(degrees/2)
+                    self.matrix[i][j]['midpoint']=midpoint
+
         self.setted = True
     
     def updateAQMatrix(self):
@@ -82,9 +92,17 @@ class MyGrid:
         6	PM25	ug/m3
         7	SO2	ug/m3
         """
+        print('updating --------')
         # Save interpolation to DB            
         sizeX= len(self.matrix)
         sizeY= len(self.matrix[0])
+        
+        for i in range(sizeX):
+            for j in range(sizeY):
+                self.matrix[i][j]['pollutants']=self.getInterpolated(self.matrix[i][j]['midpoint'])
+        self.saveToBD()
+
+    def saveToBD(self):
         datetimenow=datetime.datetime.now()-datetime.timedelta(hours=5)
         YEAR = str(datetimenow.year)
         MONTH = str(datetimenow.month).zfill(2)
@@ -92,54 +110,57 @@ class MyGrid:
         HOUR = str(datetimenow.hour).zfill(2)
         timestamp = datetime.datetime.strptime( YEAR+'-'+MONTH+'-'+DATE+' '+HOUR+':00:00', '%Y-%m-%d %H:%M:%S')
         first =False
-        for i in range(sizeX):
-            for j in range(sizeY):
-                self.matrix[i][j]['pollutants']=self.getInterpolated(self.matrix[i][j]['midpoint'])
-                try:
-                    count=0
-                    try:
-                        cursorQ=self.mydb.cursor()
-                        query= ("select * from {}.interpolatedmetrics limit 1".format(self.schema))
-                        cursorQ.execute(query)
-                        count=cursorQ.rowcount
-                        if i==0 and j==0 and count==0 :
-                            first=True
-                    except Error as error:
-                        print(error)
-                    finally:
-                        cursorQ.close()
-                    if first:
+        sizeX= len(self.matrix)
+        sizeY= len(self.matrix[0])
+        try:
+            cursor = self.mydb.cursor()
+            getPoll= ("select * from {}.pollutant".format(self.schema))
+            cursor.execute(getPoll)
+            pollutants  = list(cursor.fetchall())
+            print('poll  ',pollutants,'----------')
+            cursor.close()
+        except Error as error:
+            print(error)
+        count=0
+        try:
+            cursorQ=self.mydb.cursor()
+            query= ("select * from {}.interpolatedmetrics limit 1".format(self.schema))
+            cursorQ.execute(query)
+            count=cursorQ.rowcount
+            if count==0 :
+                first=True
+        except Error as error:
+            print(error)
+        finally:
+            cursorQ.close()
+        try:
+            
+            
+            if first:
+                for i in range(sizeX):
+                    for j in range(sizeY):
                         insertIP=("insert into {}.interpolatedmetrics(\"idinterpolation_algorithm\",\"idcell\",\"idPollutant\",\"interpolatedValiue\",\"timestamp\") values (%(algorithm)s,%(id)s,%(poll)s,%(val)s,%(time)s)".format(self.schema))
-                        cursor = self.mydb.cursor()
-                        getPoll= ("select * from {}.pollutant".format(self.schema))
-                        cursor.execute(getPoll)
-                        pollutants  = list(cursor.fetchall())
-                        print('poll  ',pollutants,'----------')
-                        cursor.close()
+                        
                         for (idpoll,polName,metric) in pollutants:
                             print('metrics: ',polName,'--------',self.matrix[i][j]['pollutants'][polName])
                             values={'algorithm':'IDW', 'id': str(i).zfill(2) +'_'+str(j).zfill(2), 'poll':int(idpoll),'val':float(self.matrix[i][j]['pollutants'][polName]),'time':timestamp }
                             cursor=self.mydb.cursor()
                             cursor.execute(insertIP,values)
                             self.mydb.commit()
-                    else:
+            else:
+                for i in range(sizeX):
+                    for j in range(sizeY):
                         updateIP=("update {}.interpolatedmetrics set \"interpolatedValiue\"=%(val)s, \"timestamp\"=%(time)s where \"idinterpolation_algorithm\"=%(algorithm)s and \"idcell\"=%(id)s and \"idPollutant\"=%(poll)s ".format(self.schema))
-                        cursor = self.mydb.cursor()
-                        getPoll= ("select * from {}.pollutant".format(self.schema))
-                        cursor.execute(getPoll)
-                        pollutants  = list(cursor.fetchall())
-                        print('poll  ',pollutants,'----------u')
-                        cursor.close()
                         for (idpoll,polName,metric) in pollutants:
                             print('metrics: ',polName,'--------',self.matrix[i][j]['pollutants'][polName])
                             values={'algorithm':'IDW', 'id': str(i).zfill(2) +'_'+str(j).zfill(2), 'poll':int(idpoll),'val':float(self.matrix[i][j]['pollutants'][polName]),'time':timestamp }
                             cursor=self.mydb.cursor()
                             cursor.execute(updateIP,values)
                             self.mydb.commit()
-                except Error as error:
-                    print(error)
-                finally:
-                    cursor.close()
+        except Error as error:
+            print(error)
+        finally:
+            cursor.close()
 
 
     
@@ -200,6 +221,8 @@ class MyGrid:
                 lat1=0
                 lon1=0
                 for (qhawax_id,timestamp,idpoll,metric,pollutantName,lat,lon) in metrics:
+                    if metric is None:
+                        metric=0.0
                     if pollutantName=='CO':
                         metricsCO.append(metric)
                     if pollutantName=='H2S':
@@ -226,7 +249,7 @@ class MyGrid:
     
     def getIDW(self,metricsCO,metricsH2S,metricsNO2,metricsO3,metricsPM10,metricsPM25,metricsSO2,metricsCoord,midpoint):
         """Loading configuration for the api requests"""
-        f = open("/home/ubuntu/Benites/TESIS2021/QairaData/Configuration/config.json","r") # Development route
+        f = open("C:\\Users\\Jhon\\Documents\\TESIS\Proyecto\\TESIS2021\\QairaData\\Configuration\\config.json","r") # Development route
         data = json.load(f)
         f.close()
         self.idw=IDW(data['p'])

@@ -16,14 +16,14 @@ def deg2rad(deg):
   return deg * (math.pi/180)
 def getCoordinates():
   """Loading configuration for the database requests"""
-  f = open("/home/ubuntu/Benites/TESIS2021/QairaData/Configuration/config.json","r")
+  f = open("C:\\Users\\Jhon\\Documents\\TESIS\Proyecto\\TESIS2021\\QairaData\\Configuration\\config.json","r")
   data = json.load(f)
   f.close()
   return [data['southLat'],data['westLon'],data['northLat'],data['eastLon']]
 
 def altoLargo():
   """Loading configuration for the database requests"""
-  f = open("/home/ubuntu/Benites/TESIS2021/QairaData/Configuration/config.json","r")
+  f = open("C:\\Users\\Jhon\\Documents\\TESIS\Proyecto\\TESIS2021\\QairaData\\Configuration\\config.json","r")
   # Development route
   data = json.load(f)
   f.close()
