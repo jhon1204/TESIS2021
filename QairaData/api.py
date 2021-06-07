@@ -97,7 +97,19 @@ def getSensors():
             cursor.execute(getPollutants,param)
             print("sdads",cursor.rowcount)
             sensors=list(cursor.fetchall())
-            print(sensors)
+            if len(sensors)!=0:
+                for (qhawax_id,lat,lon,value) in sensors:
+                    sensor={'id':qhawax_id,'lat':lat,'lon':lon, 'pollutantValue':value}
+                    message['sensors'].append(sensor)
+            else:
+                while True:
+                    timestamp=timestamp-timedelta(hours=1)
+                    param={'timestam':timestamp,'poll':pollutant}
+                    cursor=mydb.cursor()
+                    cursor.execute(getPollutants,param)
+                    sensors=list(cursor.fetchall())
+                    if len(sensors)!=0:
+                        break
             for (qhawax_id,lat,lon,value) in sensors:
                 sensor={'id':qhawax_id,'lat':lat,'lon':lon, 'pollutantValue':0.00}
                 message['sensors'].append(sensor)
@@ -108,6 +120,7 @@ def getSensors():
     finally:
         cursor.close()
         mydb.close()
+    message['timestamp']=timestamp
     return jsonify(message)
 @app.route('/cells',methods=['GET'])
 def getCells():
