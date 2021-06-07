@@ -1,6 +1,6 @@
 import json
 import requests
-from datetime import datetime,date,timedelta
+from datetime import datetime,date, time,timedelta
 import os
 import psycopg2
 from psycopg2 import DatabaseError as Error
@@ -10,7 +10,7 @@ class Qaira:
     schema = ""
     def __init__(self):
         """Loading configuration for the api requests"""
-        f = open("C:\\Users\\Jhon\\Documents\\TESIS\Proyecto\\TESIS2021\\QairaData\\Configuration\\config.json","r") # Development route
+        f = open("/var/www/html/TESIS2021/QairaData/Configuration/config.json","r") # Development route
         data = json.load(f)
         f.close()
         self.url=data['qairaUrl']
@@ -31,7 +31,7 @@ class Qaira:
             cursor.close()
             
 
-    def getAirQuality (self,ID,initial_timestamp=datetime.utcnow()):
+    def getAirQuality (self,ID,initial_timestamp=datetime.utcnow()-timedelta(hours=1,minutes=10)):
         YEAR = str(initial_timestamp.year)
         MONTH = str(initial_timestamp.month).zfill(2)
         DATE = str(initial_timestamp.day).zfill(2)

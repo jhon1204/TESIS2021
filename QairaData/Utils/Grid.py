@@ -17,7 +17,7 @@ class MyGrid:
     schema=""
     def __init__(self):
         """Loading configuration for the database requests"""
-        f = open("C:\\Users\\Jhon\\Documents\\TESIS\Proyecto\\TESIS2021\\QairaData\\Configuration\\config.json","r")
+        f = open("/var/www/html/TESIS2021/QairaData/Configuration/config.json","r")
         # Development route
         data = json.load(f)
         f.close()
@@ -101,13 +101,18 @@ class MyGrid:
         sizeX= len(self.matrix)
         sizeY= len(self.matrix[0])
         
-        for i in range(sizeX):
-            for j in range(sizeY):
-                self.matrix[i][j]['pollutants']=self.getInterpolated(self.matrix[i][j]['midpoint'])
-        self.saveToBD()
+        cursor=self.mydb.cursor()
+        query=("select * from {}.Qaira_Sensors where \"Activo\"=1".format(self.schema))
+        cursor.execute(query)
+        sensorsList= list(cursor.fetchall())
+        if len(sensorsList)!=0:
+            for i in range(sizeX):
+                for j in range(sizeY):
+                    self.matrix[i][j]['pollutants']=self.getInterpolated(self.matrix[i][j]['midpoint'])
+            self.saveToBD()
 
     def saveToBD(self):
-        datetimenow=datetime.datetime.utcnow()
+        datetimenow=datetime.datetime.utcnow()-datetime.timedelta(hours=1,minutes=10)
         YEAR = str(datetimenow.year)
         MONTH = str(datetimenow.month).zfill(2)
         DATE = str(datetimenow.day).zfill(2)
@@ -196,7 +201,7 @@ class MyGrid:
         metricsPM25=[]
         metricsSO2=[]
         metricsCoord=[]
-        initial_timestamp=datetime.datetime.utcnow()
+        initial_timestamp=datetime.datetime.utcnow()-datetime.timedelta(hours=1,minutes=10)
         for sensorID in ids:
             YEAR = str(initial_timestamp.year)
             MONTH = str(initial_timestamp.month).zfill(2)
@@ -253,7 +258,7 @@ class MyGrid:
     
     def getIDW(self,metricsCO,metricsH2S,metricsNO2,metricsO3,metricsPM10,metricsPM25,metricsSO2,metricsCoord,midpoint):
         """Loading configuration for the api requests"""
-        f = open("C:\\Users\\Jhon\\Documents\\TESIS\Proyecto\\TESIS2021\\QairaData\\Configuration\\config.json","r") # Development route
+        f = open("/var/www/html/TESIS2021/QairaData/Configuration/config.json","r") # Development route
         data = json.load(f)
         f.close()
         self.idw=IDW(data['p'])

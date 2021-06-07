@@ -21,7 +21,7 @@ CORS(app)
 
 cron = Scheduler(daemon=True)
 cron.start()
-f = open("C:\\Users\\Jhon\\Documents\\TESIS\Proyecto\\TESIS2021\\QairaData\\Configuration\\config.json","r") # Development route
+f = open("/var/www/html/TESIS2021/QairaData/Configuration/config.json","r") # Development route
 data = json.load(f)
 f.close()
 schema=data['schema']
@@ -56,7 +56,7 @@ def getInterpolated():
 def getSensors():
     message={}
     message['sensors']=[]
-    initial_timestamp=datetime.utcnow()
+    initial_timestamp=datetime.utcnow()-timedelta(hours=1,minutes=10)
     YEAR = str(initial_timestamp.year)
     MONTH = str(initial_timestamp.month).zfill(2)
     DATE = str(initial_timestamp.day).zfill(2)
@@ -72,9 +72,22 @@ def getSensors():
             cursor=mydb.cursor()
             cursor.execute(getPollutants,param)
             sensors=list(cursor.fetchall())
-            for (qhawax_id,lat,lon,value) in sensors:
-                sensor={'id':qhawax_id,'lat':lat,'lon':lon, 'pollutantValue':value}
-                message['sensors'].append(sensor)
+            if len(sensors)!=0:
+                for (qhawax_id,lat,lon,value) in sensors:
+                    sensor={'id':qhawax_id,'lat':lat,'lon':lon, 'pollutantValue':value}
+                    message['sensors'].append(sensor)
+            else:
+                while True:
+                    timestamp=timestamp-timedelta(hours=1)
+                    param={'timestam':timestamp,'poll':pollutant}
+                    cursor=mydb.cursor()
+                    cursor.execute(getPollutants,param)
+                    sensors=list(cursor.fetchall())
+                    if len(sensors)!=0:
+                        break
+                for (qhawax_id,lat,lon,value) in sensors:
+                    sensor={'id':qhawax_id,'lat':lat,'lon':lon, 'pollutantValue':value}
+                    message['sensors'].append(sensor)
         else:
             print('not poll')
             print(getPollutants)
@@ -125,29 +138,34 @@ def getDensity():
     message['type']="FeatureCollection"
     message['features']=[]
     pollutant=request.form.get("pollutant")
+    time=0
     try:
         mydb=psycopg2.connect(host=data['host'],port=data['port'],database=data['database'],user=data['username'],password=data['password'])
-        getMap =("select j.idcell,j.\"interpolatedValiue\",\"midLat\"-(0.001*100/222) as southLat, \"midLat\"+(0.001*100/222) as northLat,\"midLon\"-(0.001*100/222) as westLon,\"midLon\"+(0.001*100/222) as eastLon from (select i.idcell,i.\"interpolatedValiue\",p.\"pollutantName\" from {}.pollutant p inner join {}.interpolatedmetrics i on p.\"idPollutant\"=i.\"idPollutant\"	where p.\"pollutantName\"=%(poll)s) j inner join {}.cellsdata c on j.idcell=c.idcell".format(schema,schema,schema))
+        getMap =("select j.idcell,j.\"interpolatedValiue\",j.\"timestamp\",\"midLat\"-(0.001*100/222) as southLat, \"midLat\"+(0.001*100/222) as northLat,\"midLon\"-(0.001*100/222) as westLon,\"midLon\"+(0.001*100/222) as eastLon from (select i.idcell,i.\"interpolatedValiue\",i.\"timestamp\",p.\"pollutantName\" from {}.pollutant p inner join {}.interpolatedmetrics i on p.\"idPollutant\"=i.\"idPollutant\"	where p.\"pollutantName\"=%(poll)s) j inner join {}.cellsdata c on j.idcell=c.idcell".format(schema,schema,schema))
         if pollutant is not None:
             param={'poll':pollutant}
             cursor=mydb.cursor()
             cursor.execute(getMap,param)
             sensors=list(cursor.fetchall())
-            for (idcell,value,southLat,northLat,westLon,eastLon) in sensors:
+            for (idcell,value,timestamp,southLat,northLat,westLon,eastLon) in sensors:
+                time=timestamp
                 prop={'name':idcell,'pollution':value}
                 geom={'type':'Polygon','coordinates':[[[southLat,westLon],[northLat,westLon],[northLat,eastLon],[southLat,eastLon],[southLat,westLon]]]}
                 cell={'type':'Feature', 'id':idcell, 'properties':prop, 'geometry': geom}
                 message['features'].append(cell)
+            message['timestamp']=time
         else:
             param={'poll':'CO'}
             cursor=mydb.cursor()
             cursor.execute(getMap,param)
             sensors=list(cursor.fetchall())
-            for (idcell,value,southLat,northLat,westLon,eastLon) in sensors:
+            for (idcell,value,timestamp,southLat,northLat,westLon,eastLon) in sensors:
+                time=timestamp
                 prop={'name':idcell,'pollution':0.00}
                 geom={'type':'Polygon','coordinates':[[[southLat,westLon],[northLat,westLon],[northLat,westLon],[southLat,eastLon],[southLat,westLon]]]}
                 cell={'type':'Feature', 'id':idcell, 'properties':prop, 'geometry': geom}
                 message['features'].append(cell)
+            message['timestamp']=time
 
 
     except Error as error:
