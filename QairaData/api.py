@@ -21,7 +21,7 @@ CORS(app)
 
 cron = Scheduler(daemon=True)
 cron.start()
-f = open("/var/www/html/TESIS2021/QairaData/Configuration/config.json","r") # Development route
+f = open("C:\\Users\\Jhon\\Documents\\TESIS\\Proyecto\\TESIS2021\\QairaData\\Configuration\\config.json","r") # Development route
 data = json.load(f)
 f.close()
 schema=data['schema']
@@ -62,7 +62,8 @@ def getSensors():
     DATE = str(initial_timestamp.day).zfill(2)
     HOUR = str(initial_timestamp.hour).zfill(2)
     timestamp = datetime.strptime( YEAR+'-'+MONTH+'-'+DATE+' '+HOUR+':00:00', '%Y-%m-%d %H:%M:%S')
-    pollutant=request.form.get("pollutant")
+    pollutant=request.args.get("pollutant")
+    print('pollutant:   ',pollutant,' -----------')
     try:
         mydb=psycopg2.connect(host=data['host'],port=data['port'],database=data['database'],user=data['username'],password=data['password'])
         print('connected')
@@ -74,45 +75,73 @@ def getSensors():
             sensors=list(cursor.fetchall())
             if len(sensors)!=0:
                 for (qhawax_id,lat,lon,value) in sensors:
+                    if value is None:
+                        value=0
                     sensor={'id':qhawax_id,'lat':lat,'lon':lon, 'pollutantValue':value}
                     message['sensors'].append(sensor)
             else:
-                while True:
-                    timestamp=timestamp-timedelta(hours=1)
-                    param={'timestam':timestamp,'poll':pollutant}
-                    cursor=mydb.cursor()
-                    cursor.execute(getPollutants,param)
-                    sensors=list(cursor.fetchall())
-                    if len(sensors)!=0:
-                        break
+                cursor= mydb.cursor()
+                getMet=("SELECT \"timestamp\" FROM {}.metricslima order by \"timestamp\" desc limit 1;".format(schema))
+                cursor.execute(getMet)
+                aux=list(cursor.fetchall())
+                tims=0
+                for (time) in aux:
+                    tims=time[0]
+                param={'timestam':tims,'poll':pollutant}
+                cursor=mydb.cursor()
+                cursor.execute(getPollutants,param)
+                sensors=list(cursor.fetchall())
+                timestamp=tims
                 for (qhawax_id,lat,lon,value) in sensors:
+                    if value is None:
+                        value=0
                     sensor={'id':qhawax_id,'lat':lat,'lon':lon, 'pollutantValue':value}
+
                     message['sensors'].append(sensor)
         else:
             print('not poll')
-            print(getPollutants)
             param={'timestam':timestamp,'poll':'CO'}
             cursor=mydb.cursor()
-            print(param)
             cursor.execute(getPollutants,param)
-            print("sdads",cursor.rowcount)
             sensors=list(cursor.fetchall())
             if len(sensors)!=0:
+                print('got sensors')
                 for (qhawax_id,lat,lon,value) in sensors:
+                    if value is None:
+                        value=0
                     sensor={'id':qhawax_id,'lat':lat,'lon':lon, 'pollutantValue':value}
                     message['sensors'].append(sensor)
             else:
-                while True:
-                    timestamp=timestamp-timedelta(hours=1)
-                    param={'timestam':timestamp,'poll':pollutant}
-                    cursor=mydb.cursor()
-                    cursor.execute(getPollutants,param)
-                    sensors=list(cursor.fetchall())
-                    if len(sensors)!=0:
-                        break
-            for (qhawax_id,lat,lon,value) in sensors:
-                sensor={'id':qhawax_id,'lat':lat,'lon':lon, 'pollutantValue':0.00}
-                message['sensors'].append(sensor)
+                print('not recent metrics')
+                tims=0
+                try:
+                    cursor1= mydb.cursor()
+                    getMet=("SELECT \"timestamp\" FROM {}.metricslima order by \"timestamp\" desc limit 1;".format(schema))
+                    cursor1.execute(getMet)
+                    aux=list(cursor1.fetchall())
+                    tims=0
+                    for (time) in aux:
+                        tims=time[0]
+                    print(tims)
+                    timestamp=tims
+                except Error as error:
+                    print(error)
+                finally:
+                    cursor1.close()
+                param={'timestam':tims,'poll':'CO'}
+                try:
+                    cursor2=mydb.cursor()
+                    cursor2.execute(getPollutants,param)
+                    sensors=list(cursor2.fetchall())
+                except Error as error:
+                    print(error)
+                finally:
+                    cursor2.close()
+                for (qhawax_id,lat,lon,value) in sensors:
+                    if value is None:
+                        value=0
+                    sensor={'id':qhawax_id,'lat':lat,'lon':lon, 'pollutantValue':0.00}
+                    message['sensors'].append(sensor)
 
     except Exception as error:
         print(error)
@@ -150,7 +179,7 @@ def getDensity():
     message={}
     message['type']="FeatureCollection"
     message['features']=[]
-    pollutant=request.form.get("pollutant")
+    pollutant=request.args.get("pollutant")
     time=0
     try:
         mydb=psycopg2.connect(host=data['host'],port=data['port'],database=data['database'],user=data['username'],password=data['password'])
@@ -190,9 +219,9 @@ def getDensity():
 
 @app.route('/route',methods=['GET'])
 def getRoutes():
-    pollutant=request.form.get('pollutant')
-    startpoint=request.form.get('startpoint')
-    endpoint=request.form.get('endpoint')
+    pollutant=request.args.get('pollutant')
+    startpoint=request.args.get('startpoint')
+    endpoint=request.args.get('endpoint')
     message={}
     if startpoint is None or endpoint is None:
         return "Es necesario un punto de inicio y uno de fin"
