@@ -6,10 +6,10 @@
     "westLon":-77.0566,
     "eastLon":-77.0026,
     "p": 2,
-    "host":"air-quality-db.ckvmz9vdajd7.us-east-1.rds.amazonaws.com",
+    "host":"localhost",
     "port": "5432",
-    "username":"ia_user",
-    "password":"CalidadAire2020",
+    "username":"postgres",
+    "password":"jhon1204",
     "database":"postgres",
     "schema":"mydb" 
 

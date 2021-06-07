@@ -26,14 +26,16 @@ class MyGrid:
         self.setted=False
         self.size=altoLargo()
         self.coordinates= getCoordinates()
-        self.matrix=[[{} for i in range(math.ceil(self.size[0]/0.1))] for j in range(math.ceil(self.size[1]/0.1))] # Is divided between 0.1 to know how many cells are going to be needed
+        self.matrix=[[{} for i in range(math.ceil(self.size[1]/0.1)+1)] for j in range(math.ceil(self.size[0]/0.1)-1)] # Is divided between 0.1 to know how many cells are going to be needed
         self.QairaApi= Qaira()
         self.sensors= Sensors()
 
     
     def initializeMatrix(self):
+        print('initializing')
         sizeX= len(self.matrix)
         sizeY= len(self.matrix[0])
+        print('sizeX:',sizeX, '  sizeY:',sizeY)
         try:
             cursor0= self.mydb.cursor()
             getCells=('select * from {}.cellsData'.format(self.schema))
@@ -44,6 +46,7 @@ class MyGrid:
         finally:
             cursor0.close()
         if len(cells)==0:
+            print('empty')
             for i in range(sizeX):
                 for j in range(sizeY):
                     midpoint=[0,0]
@@ -63,6 +66,7 @@ class MyGrid:
 
                     insertGrid=("insert into {}.cellsData(\"idcell\",\"midLat\",\"midLon\") values (%(id)s,%(lat)s,%(lon)s)".format(self.schema))
                     values= { 'id': str(i).zfill(2) +'_'+str(j).zfill(2), 'lat': self.matrix[i][j]['midpoint'][0], 'lon': self.matrix[i][j]['midpoint'][1]}
+                    print(values)
                     try:
                         cursor = self.mydb.cursor()
                         cursor.execute(insertGrid,values)
@@ -103,7 +107,7 @@ class MyGrid:
         self.saveToBD()
 
     def saveToBD(self):
-        datetimenow=datetime.datetime.now()-datetime.timedelta(hours=5)
+        datetimenow=datetime.datetime.utcnow()
         YEAR = str(datetimenow.year)
         MONTH = str(datetimenow.month).zfill(2)
         DATE = str(datetimenow.day).zfill(2)
@@ -142,7 +146,7 @@ class MyGrid:
                         insertIP=("insert into {}.interpolatedmetrics(\"idinterpolation_algorithm\",\"idcell\",\"idPollutant\",\"interpolatedValiue\",\"timestamp\") values (%(algorithm)s,%(id)s,%(poll)s,%(val)s,%(time)s)".format(self.schema))
                         
                         for (idpoll,polName,metric) in pollutants:
-                            print('metrics: ',polName,'--------',self.matrix[i][j]['pollutants'][polName])
+                            #print('metrics: ',polName,'--------',self.matrix[i][j]['pollutants'][polName])
                             values={'algorithm':'IDW', 'id': str(i).zfill(2) +'_'+str(j).zfill(2), 'poll':int(idpoll),'val':float(self.matrix[i][j]['pollutants'][polName]),'time':timestamp }
                             cursor=self.mydb.cursor()
                             cursor.execute(insertIP,values)
@@ -192,7 +196,7 @@ class MyGrid:
         metricsPM25=[]
         metricsSO2=[]
         metricsCoord=[]
-        initial_timestamp=datetime.datetime.now()-datetime.timedelta(hours=5)
+        initial_timestamp=datetime.datetime.utcnow()
         for sensorID in ids:
             YEAR = str(initial_timestamp.year)
             MONTH = str(initial_timestamp.month).zfill(2)

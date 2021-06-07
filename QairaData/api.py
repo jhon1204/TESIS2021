@@ -96,6 +96,28 @@ def getSensors():
         cursor.close()
         mydb.close()
     return jsonify(message)
+@app.route('/cells',methods=['GET'])
+def getCells():
+    message={}
+    message['cells']=[]
+    try:
+        mydb=psycopg2.connect(host=data['host'],port=data['port'],database=data['database'],user=data['username'],password=data['password'])
+        getCells=("select * from {}.cellsdata".format(schema))
+        cursor=mydb.cursor()
+        cursor.execute(getCells)
+        cells=list(cursor.fetchall())
+        for(idcell,midLat,midLon) in cells:
+            cell={}
+            cell['id']=idcell
+            cell['coords']=[midLat,midLon]
+            message['cells'].append(cell)
+    except Error as error:
+        print(error)
+    finally:
+        cursor.close()
+        mydb.close()
+    return jsonify(message)
+
 
 @app.route('/densityMap',methods=['GET'])
 def getDensity():
@@ -123,7 +145,7 @@ def getDensity():
             sensors=list(cursor.fetchall())
             for (idcell,value,southLat,northLat,westLon,eastLon) in sensors:
                 prop={'name':idcell,'pollution':0.00}
-                geom={'type':'Polygon','coordinates':[[[southLat,westLon],[northLat,westLon],[northLat,eastLon],[southLat,eastLon],[southLat,westLon]]]}
+                geom={'type':'Polygon','coordinates':[[[southLat,westLon],[northLat,westLon],[northLat,westLon],[southLat,eastLon],[southLat,westLon]]]}
                 cell={'type':'Feature', 'id':idcell, 'properties':prop, 'geometry': geom}
                 message['features'].append(cell)
 
