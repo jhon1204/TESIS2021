@@ -21,7 +21,7 @@ CORS(app)
 
 cron = Scheduler(daemon=True)
 cron.start()
-f = open("C:\\Users\\Jhon\\Documents\\TESIS\\Proyecto\\TESIS2021\\QairaData\\Configuration\\config.json","r") # Development route
+f = open("/var/www/html/TESIS2021/QairaData/Configuration/config.json","r") # Development route
 data = json.load(f)
 f.close()
 schema=data['schema']

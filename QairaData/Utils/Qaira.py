@@ -10,7 +10,7 @@ class Qaira:
     schema = ""
     def __init__(self):
         """Loading configuration for the api requests"""
-        f = open("C:\\Users\\Jhon\\Documents\\TESIS\\Proyecto\\TESIS2021\\QairaData\\Configuration\\config.json","r") # Development route
+        f = open("/var/www/html/TESIS2021/QairaData/Configuration/config.json","r") # Development route
         data = json.load(f)
         f.close()
         self.url=data['qairaUrl']
