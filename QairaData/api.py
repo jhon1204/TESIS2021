@@ -220,42 +220,43 @@ def getDensity():
 @app.route('/route',methods=['GET'])
 def getRoutes():
     pollutant=request.args.get('pollutant')
-    startpoint=request.args.get('startpoint')
-    endpoint=request.args.get('endpoint')
-    message={}
-    if startpoint is None or endpoint is None:
+    startpointlat=request.args.get('startpointlat')
+    startpointlon=request.args.get('startpointlon')
+    endpointlat=request.args.get('endpointlat')
+    endpointlon=request.args.get('endpointlon')
+    if startpointlat is None or startpointlon is None or endpointlat is None or endpointlon is None:
         return "Es necesario un punto de inicio y uno de fin"
     else:
         if pollutant is None:
-            requestdijkstra="?point="+str(startpoint['lat'])+","+str(startpoint['lon'])+"&point="+str(endpoint['lat'])+","+str(endpoint['lon'])+"&type=json&locale=es-ES&elevation=false&profile=foot&algorithm=dijkstra&use_miles=false&points_encoded=false"
+            requestdijkstra="?point="+str(startpointlat)+","+str(startpointlon)+"&point="+str(endpointlat)+","+str(endpointlon)+"&type=json&locale=es-ES&elevation=false&profile=foot&algorithm=dijkstra&use_miles=false&points_encoded=false"
             response=requests.get(routingUrl+requestdijkstra)
             return jsonify(response.json())
         elif pollutant=='CO':
-            requestdijkstra="?point="+str(startpoint['lat'])+","+str(startpoint['lon'])+"&point="+str(endpoint['lat'])+","+str(endpoint['lon'])+"&type=json&locale=es-ES&elevation=false&profile=qairaco&algorithm=dijkstra&use_miles=false&points_encoded=false"
+            requestdijkstra="?point="+str(startpointlat)+","+str(startpointlon)+"&point="+str(endpointlat)+","+str(endpointlon)+"&type=json&locale=es-ES&elevation=false&profile=qairaco&algorithm=dijkstra&use_miles=false&points_encoded=false"
             response=requests.get(routingUrl+requestdijkstra)
             return jsonify(response.json())
         elif pollutant=='H2S':
-            requestdijkstra="?point="+str(startpoint['lat'])+","+str(startpoint['lon'])+"&point="+str(endpoint['lat'])+","+str(endpoint['lon'])+"&type=json&locale=es-ES&elevation=false&profile=qairah2&algorithm=dijkstra&use_miles=false&points_encoded=false"
+            requestdijkstra="?point="+str(startpointlat)+","+str(startpointlon)+"&point="+str(endpointlat)+","+str(endpointlon)+"&type=json&locale=es-ES&elevation=false&profile=qairah2&algorithm=dijkstra&use_miles=false&points_encoded=false"
             response=requests.get(routingUrl+requestdijkstra)
             return jsonify(response.json())
         elif pollutant=='NO2':
-            requestdijkstra="?point="+str(startpoint['lat'])+","+str(startpoint['lon'])+"&point="+str(endpoint['lat'])+","+str(endpoint['lon'])+"&type=json&locale=es-ES&elevation=false&profile=qairano&algorithm=dijkstra&use_miles=false&points_encoded=false"
+            requestdijkstra="?point="+str(startpointlat)+","+str(startpointlon)+"&point="+str(endpointlat)+","+str(endpointlon)+"&type=json&locale=es-ES&elevation=false&profile=qairano&algorithm=dijkstra&use_miles=false&points_encoded=false"
             response=requests.get(routingUrl+requestdijkstra)
             return jsonify(response.json())
         elif pollutant=='O3':
-            requestdijkstra="?point="+str(startpoint['lat'])+","+str(startpoint['lon'])+"&point="+str(endpoint['lat'])+","+str(endpoint['lon'])+"&type=json&locale=es-ES&elevation=false&profile=qairao3&algorithm=dijkstra&use_miles=false&points_encoded=false"
+            requestdijkstra="?point="+str(startpointlat)+","+str(startpointlon)+"&point="+str(endpointlat)+","+str(endpointlon)+"&type=json&locale=es-ES&elevation=false&profile=qairao3&algorithm=dijkstra&use_miles=false&points_encoded=false"
             response=requests.get(routingUrl+requestdijkstra)
             return jsonify(response.json())
         elif pollutant=='PM10':
-            requestdijkstra="?point="+str(startpoint['lat'])+","+str(startpoint['lon'])+"&point="+str(endpoint['lat'])+","+str(endpoint['lon'])+"&type=json&locale=es-ES&elevation=false&profile=qairapm1&algorithm=dijkstra&use_miles=false&points_encoded=false"
+            requestdijkstra="?point="+str(startpointlat)+","+str(startpointlon)+"&point="+str(endpointlat)+","+str(endpointlon)+"&type=json&locale=es-ES&elevation=false&profile=qairapm1&algorithm=dijkstra&use_miles=false&points_encoded=false"
             response=requests.get(routingUrl+requestdijkstra)
             return jsonify(response.json())
         elif pollutant=='PM25':
-            requestdijkstra="?point="+str(startpoint['lat'])+","+str(startpoint['lon'])+"&point="+str(endpoint['lat'])+","+str(endpoint['lon'])+"&type=json&locale=es-ES&elevation=false&profile=qairapm2&algorithm=dijkstra&use_miles=false&points_encoded=false"
+            requestdijkstra="?point="+str(startpointlat)+","+str(startpointlon)+"&point="+str(endpointlat)+","+str(endpointlon)+"&type=json&locale=es-ES&elevation=false&profile=qairapm2&algorithm=dijkstra&use_miles=false&points_encoded=false"
             response=requests.get(routingUrl+requestdijkstra)
             return jsonify(response.json())
         elif pollutant=='SO2':
-            requestdijkstra="?point="+str(startpoint['lat'])+","+str(startpoint['lon'])+"&point="+str(endpoint['lat'])+","+str(endpoint['lon'])+"&type=json&locale=es-ES&elevation=false&profile=qairaso2&algorithm=dijkstra&use_miles=false&points_encoded=false"
+            requestdijkstra="?point="+str(startpointlat)+","+str(startpointlon)+"&point="+str(endpointlat)+","+str(endpointlon)+"&type=json&locale=es-ES&elevation=false&profile=qairaso2&algorithm=dijkstra&use_miles=false&points_encoded=false"
             response=requests.get(routingUrl+requestdijkstra)
             return jsonify(response.json())
 
