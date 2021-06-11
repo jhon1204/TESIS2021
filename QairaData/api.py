@@ -175,7 +175,7 @@ def getCells():
 
 def getColor(value,poll):
     i=0
-    if poll=='Ninguno':
+    if not poll:
         return 'green'
     else:
         if poll=='CO':
@@ -191,85 +191,85 @@ def getColor(value,poll):
                         return 'orange'
                     else:
                         return 'red'
-    if poll=='H2S':
-        i=value*100/150
-        if i>0 and i<50:
-            return 'green'
-        else:
-            if i>50 and i<100:
-                return 'yellow'
-
+        if poll=='H2S':
+            i=value*100/150
+            if i>0 and i<50:
+                return 'green'
             else:
-                if i>100 and i<1000:
-                    return 'orange'
-                else:
-                    return 'red'
-    if poll=='NO2':
-        i=value*100/200
-        if i>0 and i<50:
-            return 'green'
-        else:
-            if i>50 and i<100:
-                return 'yellow'
+                if i>50 and i<100:
+                    return 'yellow'
 
+                else:
+                    if i>100 and i<1000:
+                        return 'orange'
+                    else:
+                        return 'red'
+        if poll=='NO2':
+            i=value*100/200
+            if i>0 and i<50:
+                return 'green'
             else:
-                if i>100 and i<150:
-                    return 'orange'
-                else:
-                    return 'red'
-    if poll=='O3':
-        i=value*100/120
-        if i>0 and  i<50:
-            return 'green'
-        else:
-            if i>50 and i<100:
-                return 'yellow'
+                if i>50 and i<100:
+                    return 'yellow'
 
+                else:
+                    if i>100 and i<150:
+                        return 'orange'
+                    else:
+                        return 'red'
+        if poll=='O3':
+            i=value*100/120
+            if i>0 and  i<50:
+                return 'green'
             else:
-                if i>100 and i<175:
-                    return 'orange'
+                if i>50 and i<100:
+                    return 'yellow'
+
                 else:
-                    return 'red'
+                    if i>100 and i<175:
+                        return 'orange'
+                    else:
+                        return 'red'
 
 
-    if poll=='PM10':
-        i=value*100/150
-        if i>0 and i<50:
-            return 'green'
-        else:
-            if i>50 and i<100:
-                return 'yellow'
-
+        if poll=='PM10':
+            i=value*100/150
+            if i>0 and i<50:
+                return 'green'
             else:
-                if i>100 and i<167:
-                    return 'orange'
-                else:
-                    return 'red'
-    if poll=='PM25':
-        i=value*100/25
-        if i>0 and i<50:
-            return 'green'
-        else:
-            if i>50 and i<100:
-                return 'yellow'
-            else:
-                if i>100 and i<500:
-                    return 'orange'
-                else:
-                    return 'red'
-    if 'SO2':
-        i=value*100/20
-        if i>0 and i<50:
-            return 'green'
-        else:
-            if i>50 and i<100:
-                return 'yellow'
+                if i>50 and i<100:
+                    return 'yellow'
 
-            else:
-                if i>100 and i<625:
-                    return 'orange'
                 else:
-                    return 'red'
+                    if i>100 and i<167:
+                        return 'orange'
+                    else:
+                        return 'red'
+        if poll=='PM25':
+            i=value*100/25
+            if i>0 and i<50:
+                return 'green'
+            else:
+                if i>50 and i<100:
+                    return 'yellow'
+                else:
+                    if i>100 and i<500:
+                        return 'orange'
+                    else:
+                        return 'red'
+        if 'SO2':
+            i=value*100/20
+            if i>0 and i<50:
+                return 'green'
+            else:
+                if i>50 and i<100:
+                    return 'yellow'
+
+                else:
+                    if i>100 and i<625:
+                        return 'orange'
+                    else:
+                        return 'red'
     return 'green'
 @app.route('/densityMap',methods=['GET'])
 def getDensity():
