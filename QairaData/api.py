@@ -164,7 +164,7 @@ def getCells():
         for(idcell,midLat,midLon) in cells:
             cell={}
             cell['id']=idcell
-            cell['coords']=[midLat,midLon]
+            cell['coords']=[midLon,midLat]
             message['cells'].append(cell)
     except Error as error:
         print(error)
@@ -192,7 +192,7 @@ def getDensity():
             for (idcell,value,timestamp,southLat,northLat,westLon,eastLon) in sensors:
                 time=timestamp
                 prop={'name':idcell,'pollution':value}
-                geom={'type':'Polygon','coordinates':[[[southLat,westLon],[northLat,westLon],[northLat,eastLon],[southLat,eastLon],[southLat,westLon]]]}
+                geom={'type':'Polygon','coordinates':[[[westLon,southLat],[westLon,northLat],[eastLon,northLat],[eastLon,southLat],[westLon,southLat]]]}
                 cell={'type':'Feature', 'id':idcell, 'properties':prop, 'geometry': geom}
                 message['features'].append(cell)
             message['timestamp']=time
@@ -239,51 +239,43 @@ def getRoutes():
             requestdijkstra="?point="+str(startpointlat)+","+str(startpointlon)+"&point="+str(endpointlat)+","+str(endpointlon)+"&type=json&locale=es-ES&elevation=false&profile=foot&algorithm=dijkstra&use_miles=false&points_encoded=false"
             response=requests.get(routingUrl+requestdijkstra)
             response=response.json()
-            response=changeCoords(response)
             return jsonify(response)
         elif pollutant=='CO':
             requestdijkstra="?point="+str(startpointlat)+","+str(startpointlon)+"&point="+str(endpointlat)+","+str(endpointlon)+"&type=json&locale=es-ES&elevation=false&profile=qairaco&algorithm=dijkstra&use_miles=false&points_encoded=false"
             response=requests.get(routingUrl+requestdijkstra)
             response=response.json()
-            response=changeCoords(response)
             return jsonify(response)
         elif pollutant=='H2S':
             requestdijkstra="?point="+str(startpointlat)+","+str(startpointlon)+"&point="+str(endpointlat)+","+str(endpointlon)+"&type=json&locale=es-ES&elevation=false&profile=qairah2&algorithm=dijkstra&use_miles=false&points_encoded=false"
             response=requests.get(routingUrl+requestdijkstra)
             response=response.json()
-            response=changeCoords(response)
             return jsonify(response)
         elif pollutant=='NO2':
             requestdijkstra="?point="+str(startpointlat)+","+str(startpointlon)+"&point="+str(endpointlat)+","+str(endpointlon)+"&type=json&locale=es-ES&elevation=false&profile=qairano&algorithm=dijkstra&use_miles=false&points_encoded=false"
             response=requests.get(routingUrl+requestdijkstra)
             response=response.json()
-            response=changeCoords(response)
             return jsonify(response)
         elif pollutant=='O3':
             requestdijkstra="?point="+str(startpointlat)+","+str(startpointlon)+"&point="+str(endpointlat)+","+str(endpointlon)+"&type=json&locale=es-ES&elevation=false&profile=qairao3&algorithm=dijkstra&use_miles=false&points_encoded=false"
             response=requests.get(routingUrl+requestdijkstra)
             response=response.json()
-            response=changeCoords(response)
             return jsonify(response)
         elif pollutant=='PM10':
             requestdijkstra="?point="+str(startpointlat)+","+str(startpointlon)+"&point="+str(endpointlat)+","+str(endpointlon)+"&type=json&locale=es-ES&elevation=false&profile=qairapm1&algorithm=dijkstra&use_miles=false&points_encoded=false"
             response=requests.get(routingUrl+requestdijkstra)
             response=response.json()
-            response=changeCoords(response)
             return jsonify(response)
         elif pollutant=='PM25':
             requestdijkstra="?point="+str(startpointlat)+","+str(startpointlon)+"&point="+str(endpointlat)+","+str(endpointlon)+"&type=json&locale=es-ES&elevation=false&profile=qairapm2&algorithm=dijkstra&use_miles=false&points_encoded=false"
             response=requests.get(routingUrl+requestdijkstra)
             response=response.json()
-            response=changeCoords(response)
             return jsonify(response)
         elif pollutant=='SO2':
             requestdijkstra="?point="+str(startpointlat)+","+str(startpointlon)+"&point="+str(endpointlat)+","+str(endpointlon)+"&type=json&locale=es-ES&elevation=false&profile=qairaso2&algorithm=dijkstra&use_miles=false&points_encoded=false"
             response=requests.get(routingUrl+requestdijkstra)
             response=response.json()
-            response=changeCoords(response)
             return jsonify(response)
-
+""" 
 @cron.interval_schedule(hours=1)
 def updateAQMap():
     message={}
@@ -299,7 +291,7 @@ def updateAQMap():
         message['result']="Error al generar las medidas interpoladas con IDW"
 
 
-
+ """
 atexit.register(lambda: cron.shutdown(wait=False))
 if __name__=="__main__":
     socketio.run(app,host='0.0.0.0', port=5001)
