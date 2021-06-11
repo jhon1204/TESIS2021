@@ -26,7 +26,7 @@ class MyGrid:
         self.setted=False
         self.size=altoLargo()
         self.coordinates= getCoordinates()
-        self.matrix=[[{} for i in range(math.ceil(self.size[1]/0.1)+1)] for j in range(math.ceil(self.size[0]/0.1)-1)] # Is divided between 0.1 to know how many cells are going to be needed
+        self.matrix=[[{} for i in range(math.ceil(self.size[0]/0.1)+1)] for j in range(math.ceil(self.size[1]/0.1)-1)] # Is divided between 0.1 to know how many cells are going to be needed
         self.QairaApi= Qaira()
         self.sensors= Sensors()
 
