@@ -173,7 +173,104 @@ def getCells():
         mydb.close()
     return jsonify(message)
 
+def getColor(value,poll):
+    i=0
+    if poll=='Ninguno':
+        return 'red'
+    else:
+        if poll=='CO':
+            i=value*100/10000
+            if i>0 and i<50:
+                return 'green'
+            else:
+                if i>50 and i<100:
+                    return 'yellow'
 
+                else:
+                    if i>100 and i<150:
+                        return 'orange'
+                    else:
+                        return 'red'
+    if poll=='H2S':
+        i=value*100/150
+        if i>0 and i<50:
+            return 'green'
+        else:
+            if i>50 and i<100:
+                return 'yellow'
+
+            else:
+                if i>100 and i<1000:
+                    return 'orange'
+                else:
+                    return 'red'
+    if poll=='NO2':
+        i=value*100/200
+        if i>0 and i<50:
+            return 'green'
+        else:
+            if i>50 and i<100:
+                return 'yellow'
+
+            else:
+                if i>100 and i<150:
+                    return 'orange'
+                else:
+                    return 'red'
+    if poll=='O3':
+        i=value*100/120
+        if i>0 and  i<50:
+            return 'green'
+        else:
+            if i>50 and i<100:
+                return 'yellow'
+
+            else:
+                if i>100 and i<175:
+                    return 'orange'
+                else:
+                    return 'red'
+
+
+    if poll=='PM10':
+        i=value*100/150
+        if i>0 and i<50:
+            return 'green'
+        else:
+            if i>50 and i<100:
+                return 'yellow'
+
+            else:
+                if i>100 and i<167:
+                    return 'orange'
+                else:
+                    return 'red'
+    if poll=='PM25':
+        i=value*100/25
+        if i>0 and i<50:
+            return 'green'
+        else:
+            if i>50 and i<100:
+                return 'yellow'
+            else:
+                if i>100 and i<500:
+                    return 'orange'
+                else:
+                    return 'red'
+    if 'SO2':
+        i=value*100/20
+        if i>0 and i<50:
+            return 'green'
+        else:
+            if i>50 and i<100:
+                return 'yellow'
+
+            else:
+                if i>100 and i<625:
+                    return 'orange'
+                else:
+                    return 'red'
+    return 'red'
 @app.route('/densityMap',methods=['GET'])
 def getDensity():
     message={}
@@ -191,7 +288,7 @@ def getDensity():
             sensors=list(cursor.fetchall())
             for (idcell,value,timestamp,southLat,northLat,westLon,eastLon) in sensors:
                 time=timestamp
-                prop={'name':idcell,'pollution':value}
+                prop={'name':idcell,'pollution':value,'color':getColor(value,pollutant)}
                 geom={'type':'Polygon','coordinates':[[[westLon,southLat],[westLon,northLat],[eastLon,northLat],[eastLon,southLat],[westLon,southLat]]]}
                 cell={'type':'Feature', 'id':idcell, 'properties':prop, 'geometry': geom}
                 message['features'].append(cell)
@@ -203,7 +300,7 @@ def getDensity():
             sensors=list(cursor.fetchall())
             for (idcell,value,timestamp,southLat,northLat,westLon,eastLon) in sensors:
                 time=timestamp
-                prop={'name':idcell,'pollution':0.00}
+                prop={'name':idcell,'pollution':0.00,'color':'red'}
                 geom={'type':'Polygon','coordinates':[[[westLon,southLat],[westLon,northLat],[eastLon,northLat],[eastLon,southLat],[westLon,southLat]]]}
                 cell={'type':'Feature', 'id':idcell, 'properties':prop, 'geometry': geom}
                 message['features'].append(cell)
