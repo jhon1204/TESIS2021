@@ -204,7 +204,7 @@ def getDensity():
             for (idcell,value,timestamp,southLat,northLat,westLon,eastLon) in sensors:
                 time=timestamp
                 prop={'name':idcell,'pollution':0.00}
-                geom={'type':'Polygon','coordinates':[[[southLat,westLon],[northLat,westLon],[northLat,westLon],[southLat,eastLon],[southLat,westLon]]]}
+                geom={'type':'Polygon','coordinates':[[[westLon,southLat],[westLon,northLat],[eastLon,northLat],[eastLon,southLat],[westLon,southLat]]]}
                 cell={'type':'Feature', 'id':idcell, 'properties':prop, 'geometry': geom}
                 message['features'].append(cell)
             message['timestamp']=time
