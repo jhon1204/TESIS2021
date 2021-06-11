@@ -109,7 +109,7 @@ def getSensors():
                 for (qhawax_id,lat,lon,value) in sensors:
                     if value is None:
                         value=0
-                    sensor={'id':qhawax_id,'lat':lat,'lon':lon, 'pollutantValue':value}
+                    sensor={'id':qhawax_id,'lat':lat,'lon':lon, 'pollutantValue':0.00}
                     message['sensors'].append(sensor)
             else:
                 print('not recent metrics')
