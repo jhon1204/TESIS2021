@@ -176,7 +176,7 @@ def getCells():
 def getColor(value,poll):
     i=0
     if poll=='Ninguno':
-        return 'red'
+        return 'green'
     else:
         if poll=='CO':
             i=value*100/10000
@@ -270,7 +270,7 @@ def getColor(value,poll):
                     return 'orange'
                 else:
                     return 'red'
-    return 'red'
+    return 'green'
 @app.route('/densityMap',methods=['GET'])
 def getDensity():
     message={}
